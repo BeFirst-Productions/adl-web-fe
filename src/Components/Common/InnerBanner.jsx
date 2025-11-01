@@ -2,7 +2,7 @@ import React from 'react';
 import Container from './Container';
 import MainButton from '../button/MainButton';
 
-const InnerBanner = ({title,description,buttonText}) => {
+const InnerBanner = ({title,description,buttonText,link}) => {
   return (
   <Container>
       <section 
@@ -25,14 +25,14 @@ const InnerBanner = ({title,description,buttonText}) => {
             
             {/* Mobile Center Button */}
             <div className="lg:hidden flex justify-center mt-8">
-                       <MainButton text={buttonText}/>
+                       <MainButton text={buttonText} url={link}/>
 
             </div>
           </div>
 
           {/* Right Side - Button (Desktop) */}
           <div className="hidden lg:flex items-center justify-center">
-            <MainButton text={buttonText}/>
+            <MainButton text={buttonText} url={link}/>
           </div>
         </div>
       </div>
