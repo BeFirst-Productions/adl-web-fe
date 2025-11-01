@@ -131,7 +131,7 @@ const ServicesSection = () => {
           <h2 className="text-2xl mb-3 md:text-3xl main-text font-bold text-white">
             Our Services
           </h2>
-          <p className="text-base lg:text-lg mb-8 font-light leading-normal">
+            <p className="text-base lg:text-lg mb-8 font-light leading-normal">
             Comprehensive business solutions to establish and grow your presence in the UAE
           </p>
         </div>
