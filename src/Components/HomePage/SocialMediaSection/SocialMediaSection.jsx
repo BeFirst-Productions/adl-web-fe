@@ -45,7 +45,7 @@ export default function SocialMediaSection() {
 
         <div className="relative">
           {/* Slider wrapper */}
-          <div className="flex animate-slide-x gap-6 w-max">
+          <div className="flex animate-slide-x gap- pt-10 w-max">
             {duplicatedPosts.map((post, index) => (
               <div
                 key={index}
