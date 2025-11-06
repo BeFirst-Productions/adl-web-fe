@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import MainButton from '../button/MainButton';
 import Container from './Container';
 
-const HeroSection = () => {
+const HeroSection = ({title,subTitle,decription,url,buttonText}) => {
   const [particles, setParticles] = useState([]);
 
   useEffect(() => {
@@ -146,29 +146,28 @@ const HeroSection = () => {
             <div className="text-center max-w-4xl mx-auto">
               {/* Main heading */}
               <motion.h1
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 sm:mb-8 leading-tight"
+                className="text-5xl md:text-6xl  font-bold text-white mb-6 sm:mb-8 leading-tight"
                 variants={titleVariants}
               >
-                Qorem ipsum dolor sit <br className="hidden sm:block" />
-                consectetur elit.
+                {title} <br className="hidden sm:block" />
+                {subTitle}
               </motion.h1>
 
               {/* Description text */}
               <motion.p
-                className="text-base sm:text-lg md:text-xl text-slate-300 mb-10 sm:mb-12 max-w-2xl mx-auto leading-relaxed px-4"
+                className="text-sm  md:text-base text-slate-300 mb-10 sm:mb-12 max-w-2xl mx-auto leading-relaxed px-4"
                 variants={textVariants}
               >
-                Horem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit
-                interdum, ac aliquet odio mattis.
+             {decription}
               </motion.p>
 
               {/* Glass morphism button */}
               <motion.div
                 variants={buttonVariants}
                 whileHover="hover"
-                className="inline-block"
-              >
-                <MainButton text='Learn More' />
+                className="inline-block w-60 md:w-75 xl:w-80"
+             >
+                <MainButton text={buttonText} url={url} />
               </motion.div>
             </div>
           </motion.div>

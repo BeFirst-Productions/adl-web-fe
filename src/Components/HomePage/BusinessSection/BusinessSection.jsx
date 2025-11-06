@@ -61,58 +61,109 @@ export default function BusinessSection() {
     };
   }, []);
 
-  // 🌀 Handle wheel scroll
-  useEffect(() => {
-    const handleWheel = (e) => {
-      if (!isLocked) return;
-      e.preventDefault();
+// 🌀 Handle wheel & touch scroll
+useEffect(() => {
+  let touchStartY = 0;
+  let touchEndY = 0;
 
-      if (scrollTimeout.current) return;
+  const handleWheel = (e) => {
+    if (!isLocked) return;
+    e.preventDefault();
 
-      if (e.deltaY > 0) {
-        // Down
-        if (activeIndex < businessData.length - 1) {
-          setActiveIndex((prev) => prev + 1);
-        } else {
-          // Exit downward
-          setIsLocked(false);
-          document.body.style.overflow = "auto";
-          const sectionBottom =
-            sectionRef.current.offsetTop + sectionRef.current.offsetHeight;
-          window.scrollTo({ top: sectionBottom, behavior: "smooth" });
-        }
+    if (scrollTimeout.current) return;
+
+    if (e.deltaY > 0) {
+      // Down
+      if (activeIndex < businessData.length - 1) {
+        setActiveIndex((prev) => prev + 1);
       } else {
-        // Up
-        if (activeIndex > 0) {
-          setActiveIndex((prev) => prev - 1);
-        } else {
-          // Exit upward
-          setIsLocked(false);
-          document.body.style.overflow = "auto";
-          const sectionTop = sectionRef.current.offsetTop;
-          window.scrollTo({
-            top: sectionTop - window.innerHeight,
-            behavior: "smooth",
-          });
-        }
+        setIsLocked(false);
+        document.body.style.overflow = "auto";
+        const sectionBottom =
+          sectionRef.current.offsetTop + sectionRef.current.offsetHeight;
+        window.scrollTo({ top: sectionBottom, behavior: "smooth" });
       }
+    } else {
+      // Up
+      if (activeIndex > 0) {
+        setActiveIndex((prev) => prev - 1);
+      } else {
+        setIsLocked(false);
+        document.body.style.overflow = "auto";
+        const sectionTop = sectionRef.current.offsetTop;
+        window.scrollTo({
+          top: sectionTop - window.innerHeight,
+          behavior: "smooth",
+        });
+      }
+    }
 
-      scrollTimeout.current = setTimeout(() => {
-        scrollTimeout.current = null;
-      }, 800);
-    };
+    scrollTimeout.current = setTimeout(() => {
+      scrollTimeout.current = null;
+    }, 800);
+  };
 
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    return () => window.removeEventListener("wheel", handleWheel);
-  }, [activeIndex, isLocked]);
+  const handleTouchStart = (e) => {
+    touchStartY = e.touches[0].clientY;
+  };
 
+  const handleTouchEnd = (e) => {
+    if (!isLocked) return;
+
+    touchEndY = e.changedTouches[0].clientY;
+    const deltaY = touchStartY - touchEndY;
+
+    if (scrollTimeout.current) return;
+
+    if (deltaY > 50) {
+      // Swipe up (scroll down)
+      if (activeIndex < businessData.length - 1) {
+        setActiveIndex((prev) => prev + 1);
+      } else {
+        setIsLocked(false);
+        document.body.style.overflow = "auto";
+        const sectionBottom =
+          sectionRef.current.offsetTop + sectionRef.current.offsetHeight;
+        window.scrollTo({ top: sectionBottom, behavior: "smooth" });
+      }
+    } else if (deltaY < -50) {
+      // Swipe down (scroll up)
+      if (activeIndex > 0) {
+        setActiveIndex((prev) => prev - 1);
+      } else {
+        setIsLocked(false);
+        document.body.style.overflow = "auto";
+        const sectionTop = sectionRef.current.offsetTop;
+        window.scrollTo({
+          top: sectionTop - window.innerHeight,
+          behavior: "smooth",
+        });
+      }
+    }
+
+    scrollTimeout.current = setTimeout(() => {
+      scrollTimeout.current = null;
+    }, 800);
+  };
+
+  window.addEventListener("wheel", handleWheel, { passive: false });
+  window.addEventListener("touchstart", handleTouchStart, { passive: true });
+  window.addEventListener("touchend", handleTouchEnd, { passive: true });
+
+  return () => {
+    window.removeEventListener("wheel", handleWheel);
+    window.removeEventListener("touchstart", handleTouchStart);
+    window.removeEventListener("touchend", handleTouchEnd);
+  };
+}, [activeIndex, isLocked]);
+ 
   return (
     <section
       ref={sectionRef}
       className="min-h-screen flex items-center justify-center py-20  relative overflow-hidden"
     >
       <Container>
-        <div className="container mx-auto px-4 flex flex-col md:flex-row md:items-center gap-12">
+        <div className="  px-4 flex flex-col md:flex-row md:items-center gap-12">
         {/* ===== LEFT CONTENT ===== */}
         <div className="flex-1 flex gap-8 items-start relative">
           {/* Vertical 3-line Indicator */}
@@ -162,7 +213,7 @@ export default function BusinessSection() {
         </div>
 
         {/* ===== RIGHT IMAGE SECTION ===== */}
-        <div className="flex-1 relative h-96 lg:h-[500px] rounded-3xl overflow-hidden glass">
+        <div className="hidden md:block flex-1 relative h-96 lg:h-[500px] rounded-3xl overflow-hidden glass">
           {/* Glass Background Overlay */}
           <div className="absolute inset-0 " />
 
