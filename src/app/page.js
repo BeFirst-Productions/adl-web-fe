@@ -37,8 +37,8 @@ export default function Home() {
     <PackageSection/>
     <Banner/>
     <VisaTypesSection/>
-    <PartnersSection/>
     <ValuesSection/>
+    <PartnersSection/>
     <BlogSection/>
     <TestimonialSection/>
     <SocialMediaSection/>

@@ -8,7 +8,7 @@ import { useState, useRef } from 'react';
 export default function ScheduleMeeting() {
   const [selectedDay, setSelectedDay] = useState(0);
   const [selectedTime, setSelectedTime] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
   const [userInfo, setUserInfo] = useState({
   name: '',
   email: '',

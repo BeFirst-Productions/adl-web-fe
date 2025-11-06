@@ -38,7 +38,7 @@ const VisaTypesSection = () => {
   ];
 
   return (
-    <section className="py-16 ">
+    <section className="py-8 md:py-14 ">
       <div className=" ">
         {/* Header Section */}
        <Container>

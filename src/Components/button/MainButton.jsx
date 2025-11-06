@@ -12,7 +12,7 @@ const MainButton = ({ text = "Learn more", url }) => {
   const content = (
     <>
       {text}
-      <span className="group w-6 h-6 md:w-[40px] md:h-[40px] flex items-center justify-center border-2 border-[#E9C05F] rounded-full transition-all duration-300 group-hover:bg-[#E9C05F] group-hover:translate-x-1">
+      <span className="group w-10 h-8 md:w-[40px] md:h-[40px] flex items-center justify-center border-2 border-[#E9C05F] rounded-full transition-all duration-300 group-hover:bg-[#E9C05F] group-hover:translate-x-1">
   <ArrowUpRight className="w-5 h-5 md:w-8  md:h-8 text-[#E9C05F] transition-colors duration-300 group-hover:text-white" />
 </span>
 
