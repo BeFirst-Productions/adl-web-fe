@@ -168,13 +168,13 @@ const BusinessJourney = ({
 
               {/* Button 2 */}
               <Link href={button2Url} className="w-1/2 md:w-50">
-                <button className="flex items-center justify-center gap-0 px-2 md:px-6 py-3 glass-button text-white font-medium transition-all duration-300 hover:bg-[#E9C05F]/10 hover:translate-x-1 w-full">
+                <button className="flex items-center justify-center gap-0 px-2 md:px-6 py-3 glass-bg rounded-3xl text-white font-medium transition-all duration-300 hover:bg-[#E9C05F]/10 hover:translate-x-1 w-full">
                   {button2Text}
                   <ArrowUpRight className="w-11 h-9 text-[#E9C05F] border border-[#E9C05F] rounded-full" />
                 </button>
               </Link>
 
-            </div>
+            </div>  
           </div>
         </div>
       </Container>

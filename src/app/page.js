@@ -44,8 +44,10 @@ export default function Home() {
     <SocialMediaSection/>
     <FAQSection/>
     <SubscribeSection/>
-    <Footer/>
-    {/* <LiquidGlass/> */}
+    <Footer/> 
+   {/* <div className="flex h-screen justify-center items-center">
+     <LiquidGlass/>
+   </div> */}
     </div>
   );
 }

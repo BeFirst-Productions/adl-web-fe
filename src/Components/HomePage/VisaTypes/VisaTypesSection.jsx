@@ -56,7 +56,7 @@ const VisaTypesSection = () => {
         </Container>
 
         {/* Visa Types Grid */}
-        <div className="relative glass flex flex-col items-center justify-center py-16 mx-20 rounded-3xl overflow-hidden">
+        <div className="relative glass-bg flex flex-col items-center justify-center py-16 mx-20 rounded-3xl overflow-hidden">
 
           {/* Decorative shapes — Left Side (Rotated / Mirrored) */}
 
@@ -90,7 +90,7 @@ const VisaTypesSection = () => {
                     </div>
 
                     {/* Back Side (Description) */}
-                    <div className="absolute inset-0 glass-button w-full text-white flex flex-col items-center justify-center text-center px-3 rotate-y-180 backface-hidden">
+                    <div className="absolute inset-0 glass-bg rounded-xl w-full text-white flex flex-col items-center justify-center text-center px-3 rotate-y-180 backface-hidden">
                       <h3 className="font-semibold text-lg mb-2">{visa.name}</h3>
                       <p className="text-sm">{visa.description}</p>
                     </div>

@@ -385,7 +385,7 @@ const ServicesSection = () => {
                         ? 'opacity-40 scale-85 blur-[1px]'
                         : 'opacity-0'
                     }
-                    w-[260px] sm:w-[232px] rounded-2xl shadow-xl p-6 glass h-[232px] 
+                    w-[260px] sm:w-[232px] rounded-2xl shadow-xl p-6 glass-bg h-[232px] 
                     origin-bottom-left flex flex-col justify-center
                   `}
                   style={{

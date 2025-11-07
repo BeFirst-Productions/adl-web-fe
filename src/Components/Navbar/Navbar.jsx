@@ -90,7 +90,7 @@ export default function Navbar() {
         <Container>
           <div
             ref={glassRef}
-            className="flex glass items-center justify-between px-6 py-3 rounded-4xl relative"
+            className="flex glass-bg items-center justify-between px-6 py-2 rounded-3xl relative"
           >
             {/* Logo */}
             <div className="flex-shrink-0">
@@ -113,9 +113,9 @@ export default function Navbar() {
                     href={item.path}
                     onMouseEnter={() => item.name === 'service' && setIsServiceOpen(true)}
                     onClick={() => setActiveSection(item.name)}
-                    className={`relative px-2 xl:px-6 py-3 rounded-xl font-normal transition-all duration-300 transform hover:scale-105 active:scale-95 ${
+                    className={`relative px-2 2xl:px-6 py-3 rounded-2xl 2xl:rounded-3xl font-normal transition-all duration-300 transform hover:scale-105 active:scale-95 ${
                       activeSection === item.name
-                        ? 'text-white bg-white/10 backdrop-blur-md border border-white/30 shadow-lg'
+                        ? 'glass-bg'
                         : 'text-white/80 hover:text-white hover:bg-white/5'
                     }`}
                   >
@@ -141,7 +141,7 @@ export default function Navbar() {
 
           {/* Mobile Dropdown */}
           {isMobileMenuOpen && (
-            <div className="md:hidden glass">
+            <div className="md:hidden switcher">
               <div className="space-y-1">
                 {navItems.map((item) => (
                   <Link
@@ -171,18 +171,18 @@ export default function Navbar() {
         
         <div
           ref={dropdownRef}
-          className="hidden lg:flex  justify-center absolute left-0 right-0 top-[105px] z-[9999]"
+          className="hidden lg:flex  justify-center absolute left-0 right-0 top-[95px] z-[9999]"
           onMouseEnter={() => setIsServiceOpen(true)}
           onMouseLeave={() => setIsServiceOpen(false)}
         >
           <div
-            className="    overflow-hidden transition-all"
+            className="  glass-bg rounded-xl  overflow-hidden transition-all"
             style={{
               width: dropdownWidth ? `${dropdownWidth}px` : 'auto',
             }}
           >
             <div
-              className="max-h-[300px] overflow-y-auto p-6 scrollbar-thin scrollbar-thumb-white/30 scrollbar-track-transparent"
+              className="max-h-[230px] overflow-y-auto p-6 scrollbar-thin scrollbar-thumb-white/30 scrollbar-track-transparent"
               style={{
                 scrollbarWidth: 'thin', // Firefox
                 scrollbarColor: 'rgba(255,255,255,0.3) transparent',
@@ -202,11 +202,11 @@ export default function Navbar() {
                 }
               `}</style>
 
-              <div className="grid grid-cols-4 gap-4 text-white text-sm">
+              <div className="grid grid-cols-4 gap-4 text-white items-center text-sm">
                 {serviceItems.map((service, i) => (
                   <div
                     key={i}
-                    className="glass-button rounded-lg p-3 text-center transition-all cursor-pointer"
+                    className="glass-bg rounded-2xl w-[250px] p-3 text-center transition-all cursor-pointer"
                   >
                    <p className='font-normal text-white z-10'>{service}</p> 
                   </div>

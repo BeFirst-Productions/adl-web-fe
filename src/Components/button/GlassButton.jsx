@@ -4,29 +4,37 @@ import { motion } from "framer-motion";
 
 export default function LiquidGlass() {
   return (
-    <div className="relative flex items-center justify-center min-h-screen  overflow-hidden">
-      {/* Background text */}
-      
+    // <motion.button
+    //   onClick={onClick}
+    //   whileTap={{ scale: 0.96 }}
+    //   className="
+    //     relative
+    //     flex items-center justify-center
+    //     px-6 py-3
+    //     rounded-2xl
+    //     bg-white/10
+    //     backdrop-blur-xl
+    //     border border-white/20
+    //     shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]
+    //     hover:bg-white/20
+    //     transition-all duration-300
+    //     text-white font-medium
+    //   "
+    // >
+    //   {/* Glossy highlight */}
+    //   <span className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/30 to-transparent opacity-40 pointer-events-none" />
+    //   {/* Actual content */}
+    //   <span className="relative z-10 flex items-center gap-2">{"children"}</span>
+    // </motion.button>
+      <div>
+        <button className="switcher px-15 py-10 rounded-4xl ">
+ 
+dfsfsfssfsf
+ 
+</button>
+  
 
-      {/* Glass button */}
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.97 }}
-        className="
-          relative px-8 py-3 rounded-2xl overflow-hidden font-semibold
-          text-white tracking-wide
-          border border-white/30
-          bg-white/10 backdrop-blur-lg
-          shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_4px_30px_rgba(0,0,0,0.1)]
-          transition-all duration-300 ease-out
-          hover:bg-white/20 hover:border-white/40
-          focus:outline-none focus:ring-2 focus:ring-white/40
-        "
-      >
-        {/* Shine overlay */}
-        <span className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent opacity-30 rounded-2xl pointer-events-none" />
-        <span className="relative z-10">Click Me</span>
-      </motion.button>
+
     </div>
   );
 }
