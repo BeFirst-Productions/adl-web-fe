@@ -9,6 +9,8 @@ import InnerBanner from "@/Components/Common/InnerBanner";
 import Footer from "@/Components/Footer/Footer";
 import ScheduleMeeting from "@/Components/HomePage/ScheduleMeeting/ScheduleMeeting";
 import AboutMainland from "@/Components/mainlandPage/AboutMainland";
+import MainlandFormation from "@/Components/mainlandPage/MainlandFormation";
+import MainlandSetup from "@/Components/mainlandPage/MainlandSetup";
 import Navbar from "@/Components/Navbar/Navbar";
 import React from "react";
 
@@ -24,7 +26,8 @@ const page = () => {
       url={"/"} />
 
       <AboutMainland/>
-     
+     <MainlandSetup/>
+     <MainlandFormation/>
       <Footer />
     </div>
   );
