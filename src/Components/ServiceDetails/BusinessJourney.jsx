@@ -160,19 +160,23 @@ const BusinessJourney = ({
               
               {/* Button 1 */}
               <Link href={button1Url} className="w-1/2 md:w-40">
-                <button className="flex items-center justify-center gap-2 px-0 py-4 text-white font-medium transition-all duration-300 hover:bg-[#E9C05F]/10 hover:translate-x-1 w-full">
+                <button className="group flex items-center justify-center gap-2 px-0 py-4 text-white font-medium transition-all duration-300  hover:translate-x-1 w-full">
                   {button1Text}
-                  <ArrowUpRight className="w-11 h-9 text-[#E9C05F] border border-[#E9C05F] rounded-full" />
+                  <ArrowUpRight className="w-11 h-9 text-[#E9C05F] border border-[#E9C05F] rounded-full  border-2 hover:translate-x-1 group-hover:text-white group-hover:bg-[#E9C05F] group-hover:translate-x-1" />
                 </button>
               </Link>
 
               {/* Button 2 */}
-              <Link href={button2Url} className="w-1/2 md:w-50">
-                <button className="flex items-center justify-center gap-0 px-2 md:px-6 py-3 glass-bg rounded-3xl text-white font-medium transition-all duration-300 hover:bg-[#E9C05F]/10 hover:translate-x-1 w-full">
-                  {button2Text}
-                  <ArrowUpRight className="w-11 h-9 text-[#E9C05F] border border-[#E9C05F] rounded-full" />
-                </button>
-              </Link>
+            <Link href={button2Url} className="w-1/2 md:w-50">
+  <button className="group flex items-center justify-center gap-0 px-2 md:px-6 py-3 glass-bg rounded-3xl text-white font-medium transition-all duration-300 hover:translate-x-1 w-full">
+    {button2Text}
+    <ArrowUpRight 
+      className="w-11 h-9 text-[#E9C05F] border border-[#E9C05F] rounded-full border-2 transition-all duration-300
+                 group-hover:text-white group-hover:bg-[#E9C05F] group-hover:translate-x-1"
+    />
+  </button>
+</Link>
+
 
             </div>  
           </div>

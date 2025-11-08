@@ -108,8 +108,8 @@ const PackageSection = () => {
                 </div>
 
                 {/* CTA Button */}
-                <div className='flex justify-center'>
-                    <button className="w-1/2  mt-6 glass rounded-4xl text-white font-semibold py-3 px-6  transition-colors duration-300">
+                <div className='flex justify-center  '>
+                    <button className="w-1/2  mt-6 glass-bg rounded-4xl text-white font-semibold py-3 px-6  transition-colors duration-300">
                  AED {pkg.price}
                 </button>
                 </div>
