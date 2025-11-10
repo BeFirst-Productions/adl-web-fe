@@ -51,7 +51,6 @@ export default function MainlandSetup() {
   return (
     <section
       className="relative 
-    bg-[linear-gradient(90deg, rgba(36,43,61,1.00) 0%,rgba(10,14,29,1.00) 48%)] bg-center
     overflow-visible py-20 lg:py-36"
     >
       {/* Decorative element */}
@@ -116,10 +115,10 @@ export default function MainlandSetup() {
                   {r.points.map((pt, idx) => (
                     <li key={idx} className="flex items-start gap-3">
                       <span
-                        className="mt-1 w-3 h-3 rounded-full border border-slate-400/70 flex-shrink-0"
+                        className="glass-bg mt-1 w-3 h-3 rounded-full border border-slate-400/70 flex-shrink-0"
                         aria-hidden
                       />
-                      <span className="text-slate-200 text-sm md:text-[15px]">
+                      <span className="text-slate-200 text-sm md:text-[15px] font-normal">
                         {pt}
                       </span>
                     </li>
