@@ -1,316 +1,203 @@
 'use client';
 
-import { motion, AnimatePresence } from "framer-motion";
-
-const ServicesMobile = ({ services }) => {
-  const containerRef = useRef(null);
-  const [isLocked, setIsLocked] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(0);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const updateWidth = () => setWindowWidth(window.innerWidth);
-      updateWidth();
-      window.addEventListener("resize", updateWidth);
-      return () => window.removeEventListener("resize", updateWidth);
-    }
-  }, []);
-  // Lock scroll when component is in view
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsLocked(true);
-          setCurrentIndex(0);
-          document.body.style.overflow = "hidden";
-        } else {
-          setIsLocked(false);
-          document.body.style.overflow = "auto";
-        }
-      },
-      { threshold: 0.7 }
-    );
-
-    if (containerRef.current) observer.observe(containerRef.current);
-    return () => {
-      observer.disconnect();
-      document.body.style.overflow = "auto";
-    };
-  }, []);
-
-  // Handle wheel scroll for card navigation
-  // Handle wheel scroll (desktop) + swipe (mobile)
-  useEffect(() => {
-    if (!isLocked) return;
-
-    let scrollTimeout = null;
-    let touchStartY = 0;
-    let touchEndY = 0;
-
-const handleScrollChange = (direction) => {
-  setCurrentIndex((prev) => {
-    const lastIndex = services.length - 1;
-    let next = prev + direction;
-
-    // Clamp within range
-    if (next < 0) next = 0;
-    if (next > lastIndex) next = lastIndex;
-
-    const rect = containerRef.current?.getBoundingClientRect();
-    const isMostlyVisible =
-      rect && rect.top < window.innerHeight * 0.9 && rect.bottom > window.innerHeight * 0.1;
-
-    // 🆙 User is on the first card and scrolls UP → unlock and go to previous section
-    if (direction < 0 && prev === 0) {
-      if (isMostlyVisible) {
-        setIsLocked(false);
-        document.body.style.overflow = "auto";
-        setTimeout(() => {
-          containerRef.current?.previousElementSibling?.scrollIntoView({
-            behavior: "smooth",
-            block: "end",
-          });
-        }, 150);
-      }
-      return prev; // stay on first card
-    }
-
-    // ⬇️ User is on the last card and scrolls DOWN → unlock and go to next section
-    if (direction > 0 && prev === lastIndex) {
-      if (isMostlyVisible) {
-        setIsLocked(false);
-        document.body.style.overflow = "auto";
-        setTimeout(() => {
-          containerRef.current?.nextElementSibling?.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }, 150);
-      }
-      return prev; // stay on last card
-    }
-
-    // ✅ Otherwise: normal step navigation
-    return next;
-  });
-};
-
-
-        // Scroll DOWN past last card → unlock and move to next section
-      
-
-    // 🖱️ Desktop scroll
-    const handleWheel = (e) => {
-      e.preventDefault();
-      if (scrollTimeout) return;
-      const direction = e.deltaY > 0 ? 1 : -1;
-      handleScrollChange(direction);
-      scrollTimeout = setTimeout(() => (scrollTimeout = null), 700);
-    };
-
-    // 📱 Mobile swipe
-    const handleTouchStart = (e) => {
-      touchStartY = e.touches[0].clientY;
-    };
-
-    const handleTouchMove = (e) => {
-      touchEndY = e.touches[0].clientY;
-    };
-
-    const handleTouchEnd = () => {
-      const delta = touchStartY - touchEndY;
-      if (Math.abs(delta) < 40) return; // ignore small moves
-      const direction = delta > 0 ? 1 : -1; // swipe up → next, swipe down → prev
-      handleScrollChange(direction);
-    };
-
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("touchmove", handleTouchMove, { passive: true });
-    window.addEventListener("touchend", handleTouchEnd, { passive: true });
-
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchmove", handleTouchMove);
-      window.removeEventListener("touchend", handleTouchEnd);
-    };
-  }, [isLocked, services.length]);
-
-  return (
-    <div
-      ref={containerRef}
-      className="relative w-full h-screen  flex flex-col justify-center items-center overflow-hidden"
-    >
-      <Container>
-        <div className="text-center mb-20">
-          <h2 className="text-2xl mb-3 md:text-3xl main-text font-bold text-white">
-            Our Services
-          </h2>
-          <p className="text-base lg:text-lg mb-8 font-light leading-normal">
-            Comprehensive business solutions to establish and grow your presence in the UAE
-          </p>
-        </div>
-      </Container>
-      
-      {/* AnimatePresence for smooth transitions */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={services[currentIndex].id}
-          className="absolute w-full max-w-sm rounded-2xl shadow-xl p-6 glass flex flex-col justify-center items-center text-center"
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -100 }}
-          transition={{ type: "spring", stiffness: 100, damping: 20 }}
-        >
-          <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">
-            {services[currentIndex].title}
-          </h3>
-          <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6">
-            {services[currentIndex].description}
-          </p>
-          <button className="w-10 h-10 flex items-center justify-center border border-[#E9C05F] rounded-full transition-all duration-300 hover:bg-[#E9C05F]/10 hover:translate-x-1">
-            <ArrowUpRight className="w-6 h-6 text-[#E9C05F]" />
-          </button>
-        </motion.div>
-      </AnimatePresence>
-
- <div className="justify-center bottom-30 w-full flex gap-2 mt-8">
-        <SecondaryButton text="More Services" />
-      </div>
-
-    </div>
-  );
-};
-
-
+import { useRef, useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import SecondaryButton from '@/Components/button/SecondaryButton';
 import Container from '@/Components/Common/Container';
 import { services } from '@/Datas/services';
 import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
-import { useRef, useEffect, useState } from 'react';
 
 const ServicesSection = () => {
   const sectionRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(-1);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [isLocked, setIsLocked] = useState(false);
   const [isSmallOrMedium, setIsSmallOrMedium] = useState(false);
-
-  const totalCards = services.length;
   const [windowWidth, setWindowWidth] = useState(0);
+  const lastScrollY = useRef(0);
+  const scrollDirection = useRef('down');
+  const totalCards = services.length;
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const updateWidth = () => setWindowWidth(window.innerWidth);
-      updateWidth();
-      window.addEventListener("resize", updateWidth);
-      return () => window.removeEventListener("resize", updateWidth);
-    }
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      scrollDirection.current = currentY > lastScrollY.current ? 'down' : 'up';
+      lastScrollY.current = currentY;
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  // ✅ Detect screen size
+
+  // ✅ Handle resize
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const handleResize = () => setIsSmallOrMedium(window.innerWidth < 1024);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    const updateWidth = () => {
+      setWindowWidth(window.innerWidth);
+      setIsSmallOrMedium(window.innerWidth < 1024);
+    };
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+    return () => window.removeEventListener('resize', updateWidth);
   }, []);
 
-  // ✅ Desktop-only: lock section in view
+  // ✅ Intersection Observer to enable scroll lock only in view
   useEffect(() => {
-    if (isSmallOrMedium) return; // Skip for sm/md
+    // make observer slightly more permissive on desktop so it can lock before the section is 100% visible
+    const options = isSmallOrMedium
+      ? { threshold: 0.9 } // mobile/tablet: only lock when section is largely visible
+      : { threshold: 0.35 }; // desktop: lock earlier so the effect works before fully in view
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsLocked(true);
-          setActiveIndex(0);
-          document.body.style.overflow = 'hidden';
-          window.scrollTo({
-            top: entry.target.getBoundingClientRect().top + window.scrollY,
-            behavior: 'smooth',
-          });
         } else {
           setIsLocked(false);
-          document.body.style.overflow = 'auto';
         }
       },
-      { threshold: 0.6 }
+      options
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
+
     return () => {
       observer.disconnect();
-      document.body.style.overflow = 'auto';
+      setIsLocked(false);
     };
   }, [isSmallOrMedium]);
 
-  // ✅ Desktop-only: wheel scroll animation
+  // ✅ Handle scroll (Desktop or Mobile)
   useEffect(() => {
-    if (!isLocked || isSmallOrMedium) return;
+    if (!isLocked) return;
 
-    let scrollTimeout = null;
+    let throttle = false;
+    let touchStartY = 0;
+    let touchEndY = 0;
 
-    const handleWheel = (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      if (scrollTimeout) return;
-
-      const direction = e.deltaY > 0 ? 1 : -1;
-
+    const handleScrollChange = (direction) => {
       setActiveIndex((prev) => {
         let next = prev + direction;
+        const lastIndex = totalCards - 1;
 
+        // Lock bounds
         if (next < 0) {
-          setActiveIndex(-1);
-          setTimeout(() => {
-            unlockAndScroll('up');
-          }, 500);
+          unlockAndScroll('up');
           return 0;
         }
-        if (next >= totalCards) {
+        if (next > lastIndex) {
           unlockAndScroll('down');
-          return totalCards - 1;
+          return lastIndex;
         }
         return next;
       });
+    };
 
-      scrollTimeout = setTimeout(() => {
-        scrollTimeout = null;
-      }, 700);
+    // 🖱️ Wheel scroll (desktop + tablets)
+    const handleWheel = (e) => {
+      e.preventDefault();
+      if (throttle) return;
+      throttle = true;
+
+      const direction = e.deltaY > 0 ? 1 : -1;
+      requestAnimationFrame(() => handleScrollChange(direction));
+      setTimeout(() => (throttle = false), 400);
+    };
+
+    // 📱 Touch swipe (mobile)
+    const handleTouchStart = (e) => (touchStartY = e.touches[0].clientY);
+    const handleTouchMove = (e) => (touchEndY = e.touches[0].clientY);
+    const handleTouchEnd = () => {
+      const delta = touchStartY - touchEndY;
+      if (Math.abs(delta) < 40) return;
+      const direction = delta > 0 ? 1 : -1;
+      handleScrollChange(direction);
     };
 
     window.addEventListener('wheel', handleWheel, { passive: false });
-    return () => window.removeEventListener('wheel', handleWheel);
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
   }, [isLocked, totalCards, isSmallOrMedium]);
 
-  // 🔓 Unlock and resume normal scrolling
+  // ✅ Unlock and scroll to next/prev section smoothly
   const unlockAndScroll = (direction) => {
     setIsLocked(false);
-    document.body.style.overflow = 'auto';
-    requestAnimationFrame(() => {
-      if (direction === 'down') {
-        sectionRef.current?.nextElementSibling?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-      } else {
-        sectionRef.current?.previousElementSibling?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'end',
-        });
-      }
-    });
+    const nextSection =
+      direction === 'down'
+        ? sectionRef.current?.nextElementSibling
+        : sectionRef.current?.previousElementSibling;
+
+    if (nextSection) {
+      window.scrollTo({
+        top: nextSection.offsetTop,
+        behavior: 'smooth',
+      });
+    }
   };
+
+  // ---------- NEW: motion variants for card animation ----------
+  const cardVariants = {
+    enter: (custom) => ({
+      x: 0,
+      rotate: custom.rotation,
+      opacity: custom.opacity,
+      scale: custom.scale,
+      transition: {
+      type: 'tween',
+      ease: [0.25, 0.1, 0.25, 1], // smooth cubic-bezier (no bounce)
+      duration: 0.6,
+    },
+    }),
+    hidden: (custom) => ({
+      x: custom.x,
+      rotate: 0,
+      opacity: custom.opacityHidden,
+      scale: custom.scaleHidden,
+      transition: {
+        type: 'tween',
+        ease: [0.22, 1, 0.36, 1],
+        duration: 0.45,
+      },
+    }),
+  };
+
+  // ✅ Render card content (shared between mobile & desktop) - now motion-based
+  const Card = ({ service, index, custom }) => (
+    <motion.div
+      custom={custom}
+      variants={cardVariants}
+      initial="hidden"
+      animate={custom.isVisible ? 'enter' : 'hidden'}
+      className={`absolute sm:relative rounded-2xl shadow-xl p-6 glass-bg h-[232px] w-[260px] sm:w-[232px] flex flex-col justify-center transition-all`}
+      style={{
+        zIndex: 1000 - index, // keep stacking order
+      }}
+    >
+      <h3 className="xl:text-xl text-lg font-bold mb-2 text-center">
+        {service.title}
+      </h3>
+      <p className="text-center text-sm leading-relaxed mb-10">
+        {service.description}
+      </p>
+      <button className="absolute bottom-4 right-4 w-8 md:w-10 h-8 md:h-10 flex items-center justify-center border border-[#E9C05F] rounded-full hover:translate-x-1 transition-all duration-300">
+        <ArrowUpRight className="w-6 h-6 text-[#E9C05F]" />
+      </button>
+    </motion.div>
+  );
 
   return (
     <section
       ref={sectionRef}
-      className="relative h-auto lg:h-screen flex py-8 md:py-14 flex-col justify-center items-center overflow-hidden"
+      className="relative h-auto lg:h-screen flex flex-col justify-center items-center overflow-hidden py-10 md:py-16"
     >
-      {/* Decorative background */}
+      {/* Decorative Background */}
       <div className="absolute left-[-10%] md:left-[-10px] -z-10 top-[25%] -translate-y-1/2 pointer-events-none select-none">
         <Image
           src="/assets/images/bg/square4.png"
@@ -324,7 +211,8 @@ const ServicesSection = () => {
         <div className="absolute w-[380px] h-[380px] -right-24 top-35 bg-[#376CBC] opacity-30 blur-[100px] rounded-[60%]" />
       </div>
 
-     {!isSmallOrMedium&& <Container>
+      {/* Header */}
+      <Container>
         <div className="text-center mb-12">
           <h2 className="text-2xl mb-3 md:text-3xl main-text font-bold text-white">
             Our Services
@@ -333,94 +221,94 @@ const ServicesSection = () => {
             Comprehensive business solutions to establish and grow your presence in the UAE
           </p>
         </div>
-      </Container>}
+      </Container>
 
-      {/* 🪄 Cards */}
-      <div
-        className={`relative w-full flex justify-center items-center ${
-          isSmallOrMedium ? 'flex-col space-y-6' : 'h-[420px] overflow-hidden'
-        }`}
-      >
+      {/* Cards Area */}
+      <div className="relative w-full flex justify-center items-center h-[420px]">
+        {/* Mobile/Tablets use AnimatePresence for single-card transitions */}
         {isSmallOrMedium ? (
-          // ✅ Render the separated mobile/tablet layout
-          <ServicesMobile services={services} />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={services[activeIndex].id}
+              className="absolute w-full max-w-sm rounded-2xl shadow-xl p-6 glass-bg flex flex-col justify-center items-center text-center"
+              initial={{ opacity: 0, y: 80 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -80 }}
+              transition={{ type: 'spring', stiffness: 80, damping: 18 }}
+            >
+              <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                {services[activeIndex].title}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6">
+                {services[activeIndex].description}
+              </p>
+              <button className="w-10 h-10 flex items-center justify-center border border-[#E9C05F] rounded-full hover:bg-[#E9C05F]/10 hover:translate-x-1 transition-all duration-300">
+                <ArrowUpRight className="w-6 h-6 text-[#E9C05F]" />
+              </button>
+            </motion.div>
+          </AnimatePresence>
         ) : (
-          // ✅ Keep desktop animation logic untouched
-          <div
-            className={`flex sm:flex-row sm:-space-x-2 lg:pl-16 xl:pl-[6rem] w-full justify-center items-center transition-all duration-700 ease-out`}
-          >
+          // Desktop stacked cards animation
+          <div className="flex sm:flex-row sm:-space-x-2 lg:pl-16 xl:pl-[6rem] w-full justify-center items-center">
             {services.map((service, index) => {
+              // Visible logic
               const isVisible = index <= activeIndex;
               const isNextOne = index === activeIndex + 1;
               const isNextTwo = index === activeIndex + 2;
 
+              // compute rotation and x offsets
               const rotation = isVisible ? -5 + (index - activeIndex) * 2 : 0;
 
-              let translateX = isVisible
+              // smaller offsets than before for smoother, subtler motion
+              const baseOffset = Math.max(160, windowWidth * 0.14); // px
+              const nextOffset1 = Math.max(230, windowWidth * 0.18);
+              const nextOffset2 = Math.max(300, windowWidth * 0.22);
+
+              const x = isVisible
                 ? 0
                 : isNextOne
-                ? windowWidth * 0.18
-                : isNextTwo
-                ? windowWidth * 0.22
-                : windowWidth * 0.6;
+                  ? nextOffset1
+                  : isNextTwo
+                    ? nextOffset2
+                    : baseOffset * 3; // far off-screen for distant cards
 
-              if (activeIndex === -1 && index === 0) {
-                translateX = windowWidth * 0.2;
-              }
+              // opacity/scale tiers
+              const opacity = isVisible ? 1 : isNextOne ? 0.75 : 0.45;
+              const opacityHidden = isVisible ? 1 : 0.1;
+              const scale = isVisible ? 1 : isNextOne ? 0.96 : 0.9;
+              const scaleHidden = isVisible ? 1 : 0.9;
 
+              // custom props for framer-motion variants
+              const custom = {
+                isVisible,
+                x, // initial x for hidden state
+                rotation,
+                opacity,
+                opacityHidden,
+                scale,
+                scaleHidden,
+              };
+
+              // guard (keeps behavior same as original)
               if (activeIndex === -1 && index > 0) return null;
 
               return (
-                <div
+                <Card
                   key={service.id}
-                  className={`
-                    absolute sm:relative 
-                    transition-all duration-[1400ms] ease-[cubic-bezier(0.77,0,0.175,1)]
-                    ${
-                      isVisible
-                        ? 'opacity-100 scale-100'
-                        : isNextOne
-                        ? 'opacity-60 scale-90 blur-[0.5px]'
-                        : isNextTwo
-                        ? 'opacity-40 scale-85 blur-[1px]'
-                        : 'opacity-0'
-                    }
-                    w-[260px] sm:w-[232px] rounded-2xl shadow-xl p-6 glass-bg h-[232px] 
-                    origin-bottom-left flex flex-col justify-center
-                  `}
-                  style={{
-                    transform: `translateX(${translateX}px) rotate(${rotation}deg)`,
-                    zIndex: totalCards - index,
-                    transitionDelay: `${index * 0.1}s`,
-                  }}
-                >
-                  <h3 className="xl:text-xl text-lg font-bold  mb-2 text-center">
-                    {service.title}
-                  </h3>
-                  <p className="text-center text-sm leading-relaxed mb-10">
-                    {service.description}
-                  </p>
-                  <button
-                    className="
-                      absolute bottom-4 right-4
-                      w-8 md:w-10 h-8 md:h-10 flex items-center justify-center
-                      border border-[#E9C05F] rounded-full
-                      transition-all duration-300  hover:translate-x-1
-                    "
-                  >
-                    <ArrowUpRight className="w-6 h-6 text-[#E9C05F]" />
-                  </button>
-                </div>
+                  service={service}
+                  index={index}
+                  custom={custom}
+                />
               );
             })}
           </div>
         )}
       </div>
 
-      {/* Button */}
-     {!isSmallOrMedium && <div className="justify-center bottom-30 w-full flex gap-2 mt-8">
+      {/* CTA Button */}
+      <div className="justify-center bottom-30 w-full flex gap-2 mt-8">
         <SecondaryButton text="More Services" />
-      </div>}
+      </div>
     </section>
   );
 };

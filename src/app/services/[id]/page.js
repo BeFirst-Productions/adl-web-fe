@@ -15,7 +15,6 @@ import { useParams } from "next/navigation";
 export default function SerivceDetails() {
   const params = useParams()
   const service = serviceDetails.find(item => item.id === params.id);
-  console.log(service);
 
 
 

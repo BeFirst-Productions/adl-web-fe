@@ -29,150 +29,192 @@ const businessData = [
 export default function BusinessSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isLocked, setIsLocked] = useState(false);
+
+  // Refs to avoid stale closures in handlers
+  const isLockedRef = useRef(isLocked);
+  const activeIndexRef = useRef(activeIndex);
   const sectionRef = useRef(null);
   const scrollTimeout = useRef(null);
 
-  // ✅ Detect when section is in view — no forced scroll, no overflow hidden
+  // keep refs in sync with state
   useEffect(() => {
-  let confirmTimeout = null;
+    isLockedRef.current = isLocked;
+  }, [isLocked]);
 
-  const handleVisibility = (entry) => {
-    const MIN_RATIO = 0.7;
-    const rectTop = Math.abs(entry.boundingClientRect.top);
-    const ratio = entry.intersectionRatio;
+  useEffect(() => {
+    activeIndexRef.current = activeIndex;
+  }, [activeIndex]);
 
-    const shouldLock = entry.isIntersecting && ratio >= MIN_RATIO && rectTop < 150;
+useEffect(() => {
+  let rafId = null;
 
-    clearTimeout(confirmTimeout);
-    confirmTimeout = setTimeout(() => {
-      setIsLocked(shouldLock);
-    }, 80);
+  const handleVisibility = (entries) => {
+    entries.forEach((entry) => {
+      const rect = entry.boundingClientRect;
+      const viewHeight =
+        window.innerHeight || document.documentElement.clientHeight;
+
+      // Section center relative to viewport center
+      const sectionCenter = rect.top + rect.height / 2;
+      const viewportCenter = viewHeight / 2;
+      const distanceFromCenter = Math.abs(viewportCenter - sectionCenter);
+
+      // ✅ Lock if section center is within 20% of viewport center
+      const shouldLock = entry.isIntersecting && distanceFromCenter < viewHeight * 0.2;
+
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        setIsLocked(shouldLock);
+        isLockedRef.current = shouldLock;
+      });
+    });
   };
 
-  const observer = new IntersectionObserver(
-    (entries) => entries.forEach(handleVisibility),
-    { threshold: [0.5, 0.7, 0.9] }
-  );
+  const observer = new IntersectionObserver(handleVisibility, {
+    threshold: [0.1, 0.3, 0.5, 0.7, 0.9],
+  });
 
   if (sectionRef.current) observer.observe(sectionRef.current);
 
-  // ✅ Added safety scroll check
   const handleScroll = () => {
     if (!sectionRef.current) return;
     const rect = sectionRef.current.getBoundingClientRect();
-    const viewHeight = window.innerHeight || document.documentElement.clientHeight;
+    const viewHeight =
+      window.innerHeight || document.documentElement.clientHeight;
 
-    // If section covers most of viewport and is near center → ensure lock
-    if (rect.top < viewHeight * 0.25 && rect.bottom > viewHeight * 0.75) {
-      if (!isLocked) setIsLocked(true);
+    const sectionCenter = rect.top + rect.height / 2;
+    const viewportCenter = viewHeight / 2;
+    const distanceFromCenter = Math.abs(viewportCenter - sectionCenter);
+
+    // ✅ Add hysteresis: lock within 20%, unlock only after 35%
+    if (distanceFromCenter < viewHeight * 0.2 && !isLockedRef.current) {
+      setIsLocked(true);
+      isLockedRef.current = true;
+    } else if (distanceFromCenter > viewHeight * 0.35 && isLockedRef.current) {
+      setIsLocked(false);
+      isLockedRef.current = false;
     }
   };
 
-  window.addEventListener("scroll", handleScroll, { passive: true });
+  window.addEventListener('scroll', handleScroll, { passive: true });
 
   return () => {
-    clearTimeout(confirmTimeout);
+    cancelAnimationFrame(rafId);
     observer.disconnect();
-    window.removeEventListener("scroll", handleScroll);
+    window.removeEventListener('scroll', handleScroll);
   };
-}, [isLocked]);
+}, []);
 
-  // 🌀 Smooth controlled scroll transitions
+
+  // Controlled wheel + touch handlers (use refs for current values)
   useEffect(() => {
     let touchStartY = 0;
     let touchEndY = 0;
 
-  const handleWheel = (e) => {
-  if (!isLocked) return;
-  e.preventDefault();
+    const safeAdvance = (nextIndex) => {
+      // clamp index
+      const clamped = Math.max(0, Math.min(businessData.length - 1, nextIndex));
+      if (clamped !== activeIndexRef.current) {
+        setActiveIndex(clamped);
+        activeIndexRef.current = clamped;
+      }
+    };
 
-  if (scrollTimeout.current) return;
-
-  if (e.deltaY > 0) {
-    // Scroll Down
-    if (activeIndex < businessData.length - 1) {
-      setActiveIndex((prev) => prev + 1);
-    } else {
-      // ✅ Allow scroll to next section
+    const allowNativeScrollToNextSection = (isDown) => {
+      if (!sectionRef.current) return;
+      // unlock to allow browser to scroll to next/prev section
       setIsLocked(false);
-      const sectionBottom =
-        sectionRef.current.offsetTop + sectionRef.current.offsetHeight;
-      window.scrollTo({ top: sectionBottom, behavior: "smooth" });
-    }
-  } else {
-    // Scroll Up
-    if (activeIndex > 0) {
-      setActiveIndex((prev) => prev - 1);
-    } else {
-      // ✅ Allow scroll to previous section
-      setIsLocked(false);
-      const sectionTop = sectionRef.current.offsetTop;
-      window.scrollTo({
-        top: sectionTop - window.innerHeight,
-        behavior: "smooth",
-      });
-    }
-  }
+      isLockedRef.current = false;
 
-  scrollTimeout.current = setTimeout(() => {
-    scrollTimeout.current = null;
-  }, 800);
-};
+      if (isDown) {
+        const sectionBottom = sectionRef.current.offsetTop + sectionRef.current.offsetHeight;
+        window.scrollTo({ top: sectionBottom, behavior: 'smooth' });
+      } else {
+        const sectionTop = sectionRef.current.offsetTop;
+        window.scrollTo({ top: sectionTop - window.innerHeight, behavior: 'smooth' });
+      }
+    };
+
+    const handleWheel = (e) => {
+      // only intercept when section is locked
+      if (!isLockedRef.current) return;
+      // we will prevent default while handling
+      e.preventDefault();
+
+      if (scrollTimeout.current) return;
+
+      const deltaY = e.deltaY;
+
+      if (deltaY > 0) {
+        // scroll down
+        if (activeIndexRef.current < businessData.length - 1) {
+          safeAdvance(activeIndexRef.current + 1);
+        } else {
+          allowNativeScrollToNextSection(true);
+        }
+      } else if (deltaY < 0) {
+        // scroll up
+        if (activeIndexRef.current > 0) {
+          safeAdvance(activeIndexRef.current - 1);
+        } else {
+          allowNativeScrollToNextSection(false);
+        }
+      }
+
+      // throttle rapid wheel events
+      scrollTimeout.current = setTimeout(() => {
+        scrollTimeout.current = null;
+      }, 700);
+    };
 
     const handleTouchStart = (e) => {
       touchStartY = e.touches[0].clientY;
     };
 
-   const handleTouchEnd = (e) => {
-  if (!isLocked) return;
+    const handleTouchEnd = (e) => {
+      if (!isLockedRef.current) return;
 
-  touchEndY = e.changedTouches[0].clientY;
-  const deltaY = touchStartY - touchEndY;
+      touchEndY = e.changedTouches[0].clientY;
+      const deltaY = touchStartY - touchEndY;
 
-  if (scrollTimeout.current) return;
+      if (scrollTimeout.current) return;
 
-  if (deltaY > 50) {
-    // Swipe up (scroll down)
-    if (activeIndex < businessData.length - 1) {
-      setActiveIndex((prev) => prev + 1);
-    } else {
-      // ✅ Allow scroll to next section
-      setIsLocked(false);
-      const sectionBottom =
-        sectionRef.current.offsetTop + sectionRef.current.offsetHeight;
-      window.scrollTo({ top: sectionBottom, behavior: "smooth" });
-    }
-  } else if (deltaY < -50) {
-    // Swipe down (scroll up)
-    if (activeIndex > 0) {
-      setActiveIndex((prev) => prev - 1);
-    } else {
-      // ✅ Allow scroll to previous section
-      setIsLocked(false);
-      const sectionTop = sectionRef.current.offsetTop;
-      window.scrollTo({
-        top: sectionTop - window.innerHeight,
-        behavior: "smooth",
-      });
-    }
-  }
+      if (deltaY > 50) {
+        // swipe up => next
+        if (activeIndexRef.current < businessData.length - 1) {
+          safeAdvance(activeIndexRef.current + 1);
+        } else {
+          allowNativeScrollToNextSection(true);
+        }
+      } else if (deltaY < -50) {
+        // swipe down => prev
+        if (activeIndexRef.current > 0) {
+          safeAdvance(activeIndexRef.current - 1);
+        } else {
+          allowNativeScrollToNextSection(false);
+        }
+      }
 
-  scrollTimeout.current = setTimeout(() => {
-    scrollTimeout.current = null;
-  }, 800);
-};
+      scrollTimeout.current = setTimeout(() => {
+        scrollTimeout.current = null;
+      }, 700);
+    };
 
-
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("touchend", handleTouchEnd, { passive: true });
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
 
     return () => {
-      window.removeEventListener("wheel", handleWheel);
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchend", handleTouchEnd);
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchend', handleTouchEnd);
+
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+        scrollTimeout.current = null;
+      }
     };
-  }, [activeIndex, isLocked]);
+  }, []); // empty deps — handlers read state from refs
 
   return (
     <section

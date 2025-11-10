@@ -1,5 +1,6 @@
 'use client';
 
+import ShinyText from '@/Components/Animations/ShinyText';
 import Container from '@/Components/Common/Container';
 import { useState, useRef } from 'react';
 
@@ -159,7 +160,7 @@ Start your UAE business journey with expert guidance. Book a meeting with our bu
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button
                     onClick={() => window.open('https://wa.me/1234567890', '_blank')}
-                    className="glass px-4 xl:px-8 py-3 xl:py-4 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
+                    className="glass px-13 xl:px-8 py-5 xl:py-4 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
                   >
                     <img src="/assets/images/icons/whatsapp.png" alt="" className="w-7 h-7" />
                     <p className="text-base lg:text-lg font-light leading-relaxed">
@@ -168,7 +169,7 @@ Start your UAE business journey with expert guidance. Book a meeting with our bu
 
                   <button
                     onClick={() => window.open('tel:+1234567890')}
-                    className="glass px-4 xl:px-8 py-3 xl:py-4 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
+                    className="glass px-15 xl:px-8 py-5 xl:py-4 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
                   >
                     <img src="/assets/images/icons/call.png" alt="" className="w-5 h-5" />
                     <p className="text-base lg:text-lg font-light leading-relaxed">
@@ -207,9 +208,17 @@ Prefer a quick call instead? Choose your preferred date and time to connect with
                 ref={sliderRef}
                 className="relative w-full  glass-bg rounded-2xl h-14 flex items-center px-4 select-none overflow-hidden"
               >
-                <p className="text-white text-center w-full font-semibold pointer-events-none">
+                {/* <p className="text-white   text-center w-full font-semibold pointer-events-none">
+               
                   Slide to Schedule
-                </p>
+                  
+                </p> */}
+ <div className='text-center w-full font-semibold pointer-events-none'>               <ShinyText 
+  text="Slide to Schedule" 
+  disabled={false} 
+  speed={2.5} 
+  className='custom-class' 
+/></div>
 
                 <div
                   onMouseDown={handleMouseDown}
