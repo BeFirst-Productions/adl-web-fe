@@ -516,6 +516,137 @@ export const serviceDetails = [
           "Most services are completed within 1–5 business days, depending on the type of transaction."
       }
     ]
+  },
+  {
+    id: "local-sponsorship",
+  
+    seo: {
+  title: "Local Sponsorship Services in Dubai | Trusted UAE Nationals by ADL Business Solutions",
+  description:
+    "Find reliable and trustworthy local sponsors for your business setup in Dubai with ADL Business Solutions. We connect you with verified UAE nationals ensuring 100% legal compliance and smooth business operations.",
+  keywords:
+    "local sponsor Dubai, UAE national sponsor, company formation Dubai, business setup UAE, Emirati local partnership, corporate sponsorship Dubai"
+},
+
+  
+    heroSection: {
+      title: "Local Sponsorship Services",
+      subTitle:
+"in Dubai",
+      description:
+" Partner with verified UAE nationals through ADL Business Solutions — ensuring legal compliance, protection, and trust in every partnership.",
+      buttonText: "Get a Quote",
+      buttonUrl: "/"
+    },
+  
+    image: "/assets/images/service-details/business-setup.png",
+  
+    title: "   Reliable Local Sponsors to Build Your Business Foundation in Dubai",
+  
+    paragraph1:
+"Setting up a mainland company in Dubai requires a reliable UAE national sponsor to represent your business as per UAE laws. At ADL Business Solutions, we simplify this process by connecting you with trustworthy and government-approved local sponsors who provide full legal coverage while giving you 100% operational control of your business.",
+    paragraph2:
+"We understand how important transparency and protection are in sponsorship agreements. That’s why we ensure every partnership is legally documented, secure, and aligned with your business interests — so you can focus on growth while we handle all compliance and formalities.Our team carefully evaluates each sponsor to ensure credibility, reliability, and confidentiality throughout your business journey. From drafting agreements to obtaining approvals, we handle every detail with precision. With ADL Business Solutions, you gain a trusted local partner who safeguards your interests and supports your long-term success in Dubai.  ",
+    button1Text: " Find a Local Sponsor",
+    button1Url: "/",
+    button2Text: "Book a Consultation",
+    button2Url: "/",
+  
+    meeting: {
+      title: " Book a Free Consultation for Local Sponsorship",
+      description:
+" Schedule a meeting with our business setup experts to find a trusted local sponsor for your mainland business. We’ll explain all the sponsorship models, agreements, and your legal rights in detail.",
+      buttonText: "Book a Free Consultation",
+      buttonUrl: "/book-consultation"
+    },
+  
+    section1: {
+      title: "Why You Need a Local Sponsor in Dubai",
+      description1:
+"In the UAE mainland, certain business structures require a UAE national to act as a local sponsor or service agent. This ensures legal compliance with government regulations while allowing foreign investors to conduct business smoothly within the country.",
+      description2:
+"ADL Business Solutions ensures that your sponsor agreement is secure, fully transparent, and backed by legal documentation — offering both flexibility and peace of mind for international entrepreneurs."
+    },
+  
+    section2: {
+      title: "Why Choose ADL Business Solutions for Sponsorship",
+      description:
+" We act as your bridge between opportunity and compliance, ensuring your mainland business grows under a safe and transparent structure.",     
+points: [
+  {
+    id: 1,
+    title: "Verified Emirati Sponsors",
+    description: "We work only with government-approved, trusted UAE nationals."
+  },
+  {
+    id: 2,
+    title: "Legally Protected Agreements",
+    description: "All sponsorships come with notarized MOA and side agreements."
+  },
+  {
+    id: 3,
+    title: "100% Business Control",
+    description: "You retain full financial and operational control of your company."
+  },
+  {
+    id: 4,
+    title: "Transparent Annual Fees",
+    description: "No commissions or hidden costs."
+  },
+  {
+    id: 5,
+    title: "Fast Documentation",
+    description: "Complete sponsorship and licensing setup within days."
+  }
+]
+
+        
+    },
+  
+    section3: {
+      title: "Our Local Sponsorship Models",
+      description:
+"We offer multiple partnership structures to suit different business types and ownership preferences:",
+      points: [
+        "Individual Local Sponsorship",
+        "Corporate Local Sponsorship",
+        " Local Service Agent (LSA)",
+
+      ],
+      image: {
+        src: "/assets/images/service-details/why-choose-us.png",
+        alt: "Business meeting"
+      }
+    },
+  
+   faqs: [
+  {
+    question: "Why is a local sponsor required in Dubai?",
+    answer:
+      "A UAE national sponsor is required for foreign investors to legally operate a mainland business in certain commercial sectors."
+  },
+  {
+    question: "Does the local sponsor control my business?",
+    answer:
+      "No. You maintain 100% operational and financial control through legally drafted side agreements."
+  },
+  {
+    question: "How are local sponsors selected by ADL?",
+    answer:
+      "We partner only with verified Emirati nationals approved by relevant authorities."
+  },
+  {
+    question: "Can I change my sponsor later?",
+    answer:
+      "Yes, our legal team can assist with sponsor transfer and documentation if needed."
+  },
+  {
+    question: "Is sponsorship required for Free Zone companies?",
+    answer:
+      "No, Free Zone entities can have 100% foreign ownership and do not require a local sponsor."
+  }
+]
+
   }
   
   

@@ -1,0 +1,36 @@
+
+import HeroSection from "@/Components/Common/HeroSection";
+import InnerBanner from "@/Components/Common/InnerBanner";
+import Footer from "@/Components/Footer/Footer";
+import Navbar from "@/Components/Navbar/Navbar";
+import ComparisonAtAGlance from "@/Components/OffshorePage/ComparisonAtAGlance";
+import OffshoreFAQAndBenefits from "@/Components/OffshorePage/OffshoreFAQAndBenefits";
+import OffshoreFormationServices from "@/Components/OffshorePage/OffshoreFormationServices";
+import OffshoreTypes from "@/Components/OffshorePage/OffshoreTypes";
+import WhychooseOffshore from "@/Components/OffshorePage/WhychooseOffshore";
+import React from "react";
+
+const page = () => {
+    return (
+        <div>
+            <Navbar />
+            <HeroSection
+                title={"Offshore Company"}
+                subTitle={"Formation in UAE"}
+                decription={"we help you establish a compliant, tax-efficient, and globally recognized offshore entity in the UAE — offering confidential structure, 100% foreign ownership, and international banking support."}
+                buttonText={"Get a Free Consultation"}
+                url={"/"} />
+
+            <WhychooseOffshore />
+            <OffshoreTypes />
+            <OffshoreFormationServices />
+            <ComparisonAtAGlance />
+            <OffshoreFAQAndBenefits />
+            <InnerBanner title={"Start Your UAE Offshore Company Today"} description={"Vorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit"} buttonText={"Book a Free Consultation"} />
+
+            <Footer />
+        </div>
+    );
+};
+
+export default page;

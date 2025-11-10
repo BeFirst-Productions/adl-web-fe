@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import MainButton from '../button/MainButton';
 import Container from './Container';
 
-const HeroSection = ({title,subTitle,decription,url,buttonText}) => {
+const HeroSection = ({ title, subTitle, decription, url, buttonText }) => {
   const [particles, setParticles] = useState([]);
 
   useEffect(() => {
@@ -134,7 +134,7 @@ const HeroSection = ({title,subTitle,decription,url,buttonText}) => {
         ))}
       </div>
 
-   
+
       <div className="relative w-full h-full flex items-center justify-center">
         <Container>
           <motion.div
@@ -150,7 +150,8 @@ const HeroSection = ({title,subTitle,decription,url,buttonText}) => {
                 variants={titleVariants}
               >
                 {title} <br className="hidden sm:block" />
-                {subTitle}
+                { subTitle }
+                
               </motion.h1>
 
               {/* Description text */}
@@ -158,15 +159,15 @@ const HeroSection = ({title,subTitle,decription,url,buttonText}) => {
                 className="text-sm  md:text-base text-slate-300 mb-10 sm:mb-12 max-w-2xl mx-auto leading-relaxed px-4"
                 variants={textVariants}
               >
-             {decription}
+                {decription}
               </motion.p>
 
               {/* Glass morphism button */}
               <motion.div
                 variants={buttonVariants}
                 whileHover="hover"
-                className="inline-block w-60 md:w-75 xl:w-80"
-             >
+                className="inline-block w-62 xl:w-75"
+              >
                 <MainButton text={buttonText} url={url} />
               </motion.div>
             </div>

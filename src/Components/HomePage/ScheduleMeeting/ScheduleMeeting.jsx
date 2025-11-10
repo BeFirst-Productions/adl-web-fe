@@ -1,5 +1,6 @@
 'use client';
 
+import ShinyText from '@/Components/Animations/ShinyText';
 import Container from '@/Components/Common/Container';
 import { useState, useRef } from 'react';
 
@@ -207,9 +208,17 @@ Prefer a quick call instead? Choose your preferred date and time to connect with
                 ref={sliderRef}
                 className="relative w-full  glass-bg rounded-2xl h-14 flex items-center px-4 select-none overflow-hidden"
               >
-                <p className="text-white text-center w-full font-semibold pointer-events-none">
+                {/* <p className="text-white   text-center w-full font-semibold pointer-events-none">
+               
                   Slide to Schedule
-                </p>
+                  
+                </p> */}
+ <div className='text-center w-full font-semibold pointer-events-none'>               <ShinyText 
+  text="Slide to Schedule" 
+  disabled={false} 
+  speed={2.5} 
+  className='custom-class' 
+/></div>
 
                 <div
                   onMouseDown={handleMouseDown}
