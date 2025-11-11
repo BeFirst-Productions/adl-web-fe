@@ -34,7 +34,7 @@ export default function Navbar() {
   ];
 
   const serviceItems = [
-    { name: 'Business Setup', path: '/services/business-setup' },
+    // { name: 'Business Setup', path: '/services/business-setup' },
     { name: 'Company Formation', path: '/services/company-formation' },
     { name: 'Golden Visa', path: '/services/golden-visa' },
     { name: 'PRO Services', path: '/services/pro-services' },
@@ -60,8 +60,6 @@ export default function Navbar() {
     { name: 'Professional License', path: '/license/professional-license' },
     { name: 'Industrial License', path: '/license/industrial-license' },
     { name: 'Tourism License', path: '/license/tourism-license' },
-    { name: 'UAE-Craftmanship License', path: '/license/e-trader-license' },
-    { name: 'UAE-Warehousing Licencse', path: '/license/e-commercial-license' },
     { name: 'E-Trader License', path: '/license/freezone' },
     { name: 'Freelance Permit', path: '/license/offshore' },
   ];
@@ -72,6 +70,8 @@ export default function Navbar() {
     { name: 'Family Visa', path: '/visa/family-visa' },
     { name: 'Golden Visa', path: '/visa/golden-visa' },
     { name: 'Freelance Visa', path: '/visa/freelance-visa' },
+    { name: 'Green Visa', path: '/visa/green-visa' },
+    { name: 'Blue Visa', path: '/visa/blue-visa' },
   ];
 
   // detect active route

@@ -3,7 +3,9 @@ import HeroSection from "@/Components/Common/HeroSection";
 import InnerBanner from "@/Components/Common/InnerBanner";
 import Footer from "@/Components/Footer/Footer";
 import CommercialLicenseSection from "@/Components/LicensePage/CommercialLicenseSection";
+import FAQS from "@/Components/LicensePage/faqs";
 import MainSection from "@/Components/LicensePage/MainSection";
+import WhyADLSection from "@/Components/LicensePage/WhyADLSection";
 import Navbar from "@/Components/Navbar/Navbar";
 import ComparisonAtAGlance from "@/Components/OffshorePage/ComparisonAtAGlance";
 import OffshoreFAQAndBenefits from "@/Components/OffshorePage/OffshoreFAQAndBenefits";
@@ -24,12 +26,9 @@ const page = () => {
 
             <MainSection />
             <CommercialLicenseSection/>
-            <OffshoreTypes />
-            <OffshoreFormationServices />
-            <ComparisonAtAGlance />
-            <OffshoreFAQAndBenefits />
-            <InnerBanner title={"Start Your UAE Offshore Company Today"} description={"Vorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit"} buttonText={"Book a Free Consultation"} />
-
+          <WhyADLSection/>
+            <InnerBanner title={"Lorem ipsum dolor sit amet, consectetur "} description={"Vorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit"} buttonText={"Book a Free Consultation"} />
+        {/* <FAQS faqs={}/> */}
             <Footer />
         </div>
     );
