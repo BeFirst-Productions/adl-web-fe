@@ -14,7 +14,7 @@ import Navbar from "@/Components/Navbar/Navbar";
 import { freezoneDetails } from "@/Datas/freezoneDetails";
 import { useParams } from "next/navigation";
 
-export default function SerivceDetails() {
+export default function page() {
   const params = useParams()
   const freezone = freezoneDetails.find(item => item.id === params.id);
 
