@@ -36,7 +36,7 @@ const page = () => {
 
       <AboutFreezoneDetails />
       <FreezoneInfoCard />
-      <FreezoneProcessCubes/>
+      {/* <FreezoneProcessCubes/> */}
       <FreezoneCategories/>
       <FreezoneLicenses/>
       <PricingPackages/>
