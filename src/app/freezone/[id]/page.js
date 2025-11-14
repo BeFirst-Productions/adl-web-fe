@@ -1,15 +1,16 @@
 "use client"
+
 import HeroSection from "@/Components/Common/HeroSection";
 import InnerBanner from "@/Components/Common/InnerBanner";
 import Footer from "@/Components/Footer/Footer";
-import AboutFreezone from "@/Components/FreezoneDetailsPage/AboutFreezone";
-import ClientExperiences from "@/Components/FreezoneDetailsPage/ClientExperiences";
-import CompanySetupProcess from "@/Components/FreezoneDetailsPage/CompanySetupProcess";
-import FacilitiesSection from "@/Components/FreezoneDetailsPage/FacilitiesSection";
-import SetupPackages from "@/Components/FreezoneDetailsPage/SetupPackages";
-import TypesOfLicenses from "@/Components/FreezoneDetailsPage/TypesOfLicenses";
-import WhyChoose from "@/Components/FreezoneDetailsPage/WhyChoose";
- import Navbar from "@/Components/Navbar/Navbar";
+import AboutFreezone from "@/Components/FreezoneDetailPage/AboutFreezone";
+import ClientExperiences from "@/Components/FreezoneDetailPage/ClientExperiences";
+import CompanySetupProcess from "@/Components/FreezoneDetailPage/CompanySetupProcess";
+import SetupPackages from "@/Components/FreezoneDetailPage/SetupPackages";
+import TypesOfLicenses from "@/Components/FreezoneDetailPage/TypesOfLicenses";
+import WhyChoose from "@/Components/FreezoneDetailPage/WhyChoose";
+import WhyChooseADL from "@/Components/FreezoneDetailPage/WhyChooseADL";
+import Navbar from "@/Components/Navbar/Navbar";
 import { freezoneDetails } from "@/Datas/freezoneDetails";
 import { useParams } from "next/navigation";
 
