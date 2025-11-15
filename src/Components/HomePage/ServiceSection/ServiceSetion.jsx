@@ -165,7 +165,7 @@ const ServicesSection = () => {
       className="relative h-auto lg:h-screen flex flex-col justify-center items-center overflow-hidden py-10 md:py-16"
     >
       {/* Background Decoration */}
-      <div className="absolute left-[-10%] md:left-[-10px] -z-10 top-[25%] -translate-y-1/2 pointer-events-none select-none">
+      <div className="hidden md:block absolute left-[-10%] md:left-[-10px] -z-10 top-[25%] -translate-y-1/2 pointer-events-none select-none">
         <Image
           src="/assets/images/bg/square4.png"
           alt="Decorative shapes"
