@@ -31,7 +31,7 @@ export const serviceDetails = [
 
     button1Text: "Schedule a Free Consultation",
     button1Url: "/",
-    button2Text: "Explore Setup Packages",
+    button2Text: "Schedule a Free\nConsultation",
     button2Url: "/",
 
     meeting: {
@@ -285,7 +285,7 @@ export const serviceDetails = [
       "We manage your eligibility assessment, documentation, medicals, and application submission directly through UAE authorities. Whether you’re applying as an investor, entrepreneur, or specialized professional, our team ensures your visa is processed quickly and without errors — so you can enjoy life and opportunity in Dubai with complete peace of mind.Our consultants stay updated with every UAE immigration regulation to provide accurate, reliable guidance. From family sponsorship to business setup support, we assist you beyond the visa process. With ADL Business Solutions, you gain not only residency -but a trusted partner committed to your long-term success in the UAE.",
     button1Text: "Check Your Eligibility",
     button1Url: "/",
-    button2Text: "Apply for Golden Visa",
+    button2Text: "Apply for\nGolden Visa",
     button2Url: "/",
 
     meeting: {

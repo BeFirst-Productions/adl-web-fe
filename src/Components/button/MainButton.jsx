@@ -7,6 +7,8 @@ const MainButton = ({ text = "Learn more", url }) => {
  glass-bg 
     active:scale-95  
     shadow-lg group
+whitespace-pre-line
+
   `;
 
   const content = (

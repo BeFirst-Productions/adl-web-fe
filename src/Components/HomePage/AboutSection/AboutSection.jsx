@@ -81,7 +81,7 @@ export default function AboutSection() {
   }, [isVisible]);
 
   return (
-    <section ref={sectionRef} className=" relative py-8 md:py-14 h-auto lg:h-[800px] ">
+    <section ref={sectionRef} className=" relative py-8 md:py-14 h-auto lg:h-[700px] ">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Glowing Blob Left */}
         <div className="

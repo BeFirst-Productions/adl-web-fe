@@ -39,7 +39,7 @@ export default function Page() {
         buttonUrl={visa.meeting.buttonUrl}
       />
       <FAQSection faqs={visa.faqs} />
-      <SuggestedBlogs blogs={blogs.slice(0,4)} />
+      <SuggestedBlogs blogs={visa.relatedBlogs} />
       <Footer />
     </div>
   );

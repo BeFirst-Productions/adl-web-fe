@@ -1,3 +1,4 @@
+import AboutScheduleMeeting from "@/Components/aboutPage/AboutScheduleMeeting";
 import AboutSection from "@/Components/aboutPage/AboutSection";
 import CTASection from "@/Components/aboutPage/CTASection ";
 import InsightsSection from "@/Components/aboutPage/InsightsSection ";
@@ -27,7 +28,7 @@ const page = () => {
       decription={"ADL Business Solutions simplifies the entire process of company setup in Dubai and across the UAE — from trade licensing to operational compliance."} buttonText={"Get a Free Consultation"} url={"#schedule-meeting"} />
       <InsightsSection />
       <AboutSection />
-      <ScheduleMeeting />
+      <AboutScheduleMeeting/>
       <WhyUAEParallax/>
       <TeamSection />
       <WhyChooseSection />

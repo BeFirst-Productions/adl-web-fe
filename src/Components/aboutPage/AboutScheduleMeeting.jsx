@@ -4,9 +4,8 @@ import ShinyText from "@/Components/Animations/ShinyText";
 import Container from "@/Components/Common/Container";
 import MeetingComponent from "@/Components/Common/MeetingComponent";
 import { useState, useRef } from "react";
-import { motion } from "framer-motion"; // <-- added
 
-export default function ScheduleMeeting() {
+export default function AboutScheduleMeeting() {
   const [selectedDay, setSelectedDay] = useState(0);
   const [selectedTime, setSelectedTime] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,16 +25,6 @@ export default function ScheduleMeeting() {
     Freezone: ["DMCC", "IFZA", "Meydan", "RAKEZ", "Sharjah Media City"],
   };
   const sliderRef = useRef(null);
-
-  // Animation variants (small, subtle)
-  const fadeUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
-  };
 
   // Generate next 6 days
   const generateNextDays = () => {
@@ -155,25 +144,13 @@ export default function ScheduleMeeting() {
   return (
     <section
       id="schedule-meeting"
-      className="h-auto lg:h-[600px]  py-8 md:py-16 "
+      className="h-auto lg:h-[600px]  py-8 md:py-16 lg:py-24 "
     >
       <Container>
-        <motion.div
-          className="container  glass rounded-4xl"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }}
-        >
+        <div className="container  glass rounded-4xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-1 xl:gap-12 items-start">
             {/* Left Section */}
-            <motion.div
-              className="space-y-8  "
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.25 }}
-            >
+            <div className="space-y-8  ">
               <div className="p-5 md:p-9  rounded-3xl">
                 <h2 className="text-2xl mb-3 md:text-3xl main-text font-bold text-white ">
                   Schedule Meeting
@@ -219,16 +196,10 @@ export default function ScheduleMeeting() {
                   </button>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Right Section */}
-            <motion.div
-              className=" p-5 md:p-9 rounded-3xl"
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.25 }}
-            >
+            <div className=" p-5 md:p-9 rounded-3xl">
               <h3 className="text-3xl lg:text-4xl font-semibold text-white mb-3 ">
                 Schedule a Call
               </h3>
@@ -301,9 +272,9 @@ export default function ScheduleMeeting() {
                   </svg>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </Container>
 
       {/* Modal */}

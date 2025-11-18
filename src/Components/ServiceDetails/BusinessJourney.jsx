@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "../Common/Container";
 import { ArrowUpRight } from "lucide-react";
+import MainButton from "../button/MainButton";
 
 const  BusinessJourney = ({
   heading,
@@ -158,16 +159,22 @@ const  BusinessJourney = ({
             {/* Buttons */}
             <div className="flex flex-col md:flex-row justify-center items-center w-full gap-8 pt-4">
               
-              {/* Button 1 */}
-              <Link href={button1Url} className="w-1/2 md:w-40">
+      
+              {/* <Link href={button1Url} className="w-1/2 md:w-40">
                 <button className="group flex items-center justify-center gap-2 px-0 py-4 text-white font-medium transition-all duration-300  hover:translate-x-1 w-full">
                   {button1Text}
                   <ArrowUpRight className="w-11 h-9 text-[#E9C05F] border border-[#E9C05F] rounded-full  border-2 hover:translate-x-1 group-hover:text-white group-hover:bg-[#E9C05F] group-hover:translate-x-1" />
                 </button>
-              </Link>
+              </Link> */}
+<div className="max-w-sm">
 
-              {/* Button 2 */}
-            <Link href={button2Url} className="w-1/2 md:w-50">
+        <MainButton
+        text={button2Text}
+        url={button2Url}
+        />
+</div>
+
+            {/* <Link href={button2Url} className=" md:w-50">
   <button className="group flex items-center justify-center gap-0 px-2 md:px-6 py-3 glass-bg rounded-3xl text-white font-medium transition-all duration-300 hover:translate-x-1 w-full">
     {button2Text}
     <ArrowUpRight 
@@ -175,7 +182,7 @@ const  BusinessJourney = ({
                  group-hover:text-white group-hover:bg-[#E9C05F] group-hover:translate-x-1"
     />
   </button>
-</Link>
+</Link> */}
 
 
             </div>  

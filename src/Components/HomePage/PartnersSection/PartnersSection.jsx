@@ -8,13 +8,13 @@ const PartnersSection = () => {
   return (
     <section className="relative py-8 md:py-14 overflow-hidden">
       {/* Background */}
-      <div className="absolute left-[80%] -top-10 -z-10">
+      {/* <div className="absolute left-[80%] -top-10 -z-10">
         <img
           src="/assets/images/bg/bubble.png"
           alt=""
           className="relative w-[500px] h-[400px] object-contain"
         />
-      </div>
+      </div> */}
 
       {/* Header */}
       <Container>
