@@ -1,4 +1,3 @@
-import { blogs } from "@/Datas/blogs";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -35,9 +34,9 @@ import Link from "next/link";
 //   },
 // ];
 
-export default function Blogs() {
+export default function Blogs({blogs}) {
   // Duplicate for smooth infinite scroll
-     const duplicatedPosts = blogs.slice(7);
+     const duplicatedPosts = blogs;
    
      return (
        <section className="  py-8 md:py-14  overflow-hidden">
