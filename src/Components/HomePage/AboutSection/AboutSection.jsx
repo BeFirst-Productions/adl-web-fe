@@ -1,6 +1,5 @@
 'use client';
 
-import MainButton from '@/Components/button/MainButton';
 import SecondaryButton from '@/Components/button/SecondaryButton';
 import Container from '@/Components/Common/Container';
 import { useEffect, useRef, useState } from 'react';

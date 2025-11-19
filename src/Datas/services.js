@@ -259,27 +259,27 @@ export const serviceDetails = [
       {
         title: "Mainland vs Freezone: Which Company Formation is Right for You?",
         url: "/blog/mainland-vs-freezone-which-company-formation-is-right-for-you",
-        image: "/assets/images/blogs/mainland-vs-freezone.jpg"
+        image: "/assets/images/service-details/blogs/mainland-vs-freezone.jpg"
       },
       {
         title: "Everything You Need to Know About Offshore Companies in Dubai",
         url: "/blog/everything-you-need-to-know-about-offshore-companies-in-dubai",
-        image: "/assets/images/blogs/offshore-companies-dubai.jpg"
+        image: "/assets/images/service-details/blogs/offshore-companies-dubai.jpg"
       },
       {
         title: "Top 10 Benefits of Forming a Company in the UAE",
         url: "/blog/top-10-benefits-of-forming-a-company-in-the-uae",
-        image: "/assets/images/blogs/company-formation-benefits-uae.jpg"
+        image: "/assets/images/service-details/blogs/company-formation-benefits-uae.jpg"
       },
       {
         title: "Common Mistakes to Avoid During Company Formation",
         url: "/blog/common-mistakes-to-avoid-during-company-formation",
-        image: "/assets/images/blogs/company-formation-mistakes.jpg"
+        image: "/assets/images/service-details/blogs/company-formation-mistakes.jpg"
       },
       {
         title: "Step-by-Step Guide to Registering a Business in Dubai (2025 Edition)",
         url: "/blog/step-by-step-guide-to-registering-a-business-in-dubai-2025-edition",
-        image: "/assets/images/blogs/business-registration-dubai-2025.jpg"
+        image: "/assets/images/service-details/blogs/business-registration-dubai-2025.jpg"
       }
     ],
 
@@ -418,27 +418,27 @@ export const serviceDetails = [
       {
         title: "Complete Guide to the UAE Golden Visa (2025 Update)",
         url: "/blog/complete-guide-to-the-uae-golden-visa-2025-update",
-        image: "/assets/images/blogs/uae-golden-visa-guide-2025.jpg"
+        image: "/assets/images/service-details/blogs/golden-visa/uae-golden-visa-guide-2025.jpg"
       },
       {
         title: "Top Benefits of the 10-Year Golden Visa in Dubai",
         url: "/blog/top-benefits-of-the-10-year-golden-visa-in-dubai",
-        image: "/assets/images/blogs/golden-visa-benefits-dubai.jpg"
+        image: "/assets/images/service-details/blogs/golden-visa/golden-visa-benefits-dubai.jpg"
       },
       {
         title: "Golden Visa for Property Investors: What You Need to Know",
         url: "/blog/golden-visa-for-property-investors-what-you-need-to-know",
-        image: "/assets/images/blogs/golden-visa-property-investors.jpg"
+        image: "/assets/images/service-details/blogs/golden-visa/golden-visa-property-investors.jpg"
       },
       {
         title: "How to Transition from a Regular Visa to a Golden Visa in the UAE",
         url: "/blog/how-to-transition-from-regular-visa-to-golden-visa-uae",
-        image: "/assets/images/blogs/transition-to-golden-visa-uae.jpg"
+        image: "/assets/images/service-details/blogs/golden-visa/transition-to-golden-visa-uae.jpg"
       },
       {
         title: "Golden Visa vs Investor Visa — Which One Is Right for You?",
         url: "/blog/golden-visa-vs-investor-visa-which-one-is-right-for-you",
-        image: "/assets/images/blogs/golden-visa-vs-investor-visa.jpg"
+        image: "/assets/images/service-details/blogs/golden-visa/golden-visa-vs-investor-visa.jpg"
       }
     ]
 
@@ -577,27 +577,27 @@ export const serviceDetails = [
       {
         title: "Why Every Business in Dubai Needs a Dedicated PRO Service",
         url: "/blog/why-every-business-in-dubai-needs-a-dedicated-pro-service",
-        image: "/assets/images/blogs/pro-services-dubai-importance.jpg"
+        image: "/assets/images/service-details/blogs/pro-services/pro-services-dubai-importance.jpg"
       },
       {
         title: "Top 5 Mistakes Companies Make When Handling Government Documents",
         url: "/blog/top-5-mistakes-companies-make-when-handling-government-documents",
-        image: "/assets/images/blogs/government-documents-mistakes.jpg"
+        image: "/assets/images/service-details/blogs/pro-services/government-documents-mistakes.jpg"
       },
       {
         title: "How Outsourcing PRO Services Can Save Your Business Time and Money",
         url: "/blog/how-outsourcing-pro-services-can-save-your-business-time-and-money",
-        image: "/assets/images/blogs/outsourcing-pro-services-benefits.jpg"
+        image: "/assets/images/service-details/blogs/pro-services/outsourcing-pro-services-benefits.jpg"
       },
       {
         title: "The Role of a Corporate PRO in UAE Business Compliance",
         url: "/blog/the-role-of-a-corporate-pro-in-uae-business-compliance",
-        image: "/assets/images/blogs/corporate-pro-compliance-uae.jpg"
+        image: "/assets/images/service-details/blogs/pro-services/corporate-pro-compliance-uae.jpg"
       },
       {
         title: "Complete Checklist for New Visa Processing in Dubai",
         url: "/blog/complete-checklist-for-new-visa-processing-in-dubai",
-        image: "/assets/images/blogs/dubai-visa-processing-checklist.jpg"
+        image: "/assets/images/service-details/blogs/pro-services/dubai-visa-processing-checklist.jpg"
       }
     ]
 
@@ -736,27 +736,27 @@ export const serviceDetails = [
       {
         title: "Understanding Local Sponsorship in Dubai Mainland",
         url: "/blog/understanding-local-sponsorship-in-dubai-mainland",
-        image: "/assets/images/blogs/local-sponsorship-dubai-mainland.jpg"
+        image: "/assets/images/service-details/blogs/local-sponsorship/local-sponsorship-dubai-mainland.jpg"
       },
       {
         title: "Top Benefits of Partnering with a Corporate Local Sponsor",
         url: "/blog/top-benefits-of-partnering-with-a-corporate-local-sponsor",
-        image: "/assets/images/blogs/corporate-local-sponsor-benefits.jpg"
+        image: "/assets/images/service-details/blogs/local-sponsorship/corporate-local-sponsor-benefits.jpg"
       },
       {
         title: "How to Protect Your Business Legally with a Local Sponsor",
         url: "/blog/how-to-protect-your-business-legally-with-a-local-sponsor",
-        image: "/assets/images/blogs/legal-protection-local-sponsor.jpg"
+        image: "/assets/images/service-details/blogs/local-sponsorship/legal-protection-local-sponsor.jpg"
       },
       {
         title: "Difference Between Local Sponsor and Local Service Agent (LSA)",
         url: "/blog/difference-between-local-sponsor-and-local-service-agent-lsa",
-        image: "/assets/images/blogs/local-sponsor-vs-lsa.jpg"
+        image: "/assets/images/service-details/blogs/local-sponsorship/local-sponsor-vs-lsa.jpg"
       },
       {
         title: "Checklist for Selecting the Right Local Sponsor in Dubai",
         url: "/blog/checklist-for-selecting-the-right-local-sponsor-in-dubai",
-        image: "/assets/images/blogs/selecting-local-sponsor-dubai.jpg"
+        image: "/assets/images/service-details/blogs/local-sponsorship/selecting-local-sponsor-dubai.jpg"
       }
     ]
 
@@ -891,27 +891,27 @@ export const serviceDetails = [
       {
         title: "Step-by-Step Guide to Obtaining a UAE Residence Visa",
         url: "/blog/step-by-step-guide-to-obtaining-a-uae-residence-visa",
-        image: "/assets/images/blogs/uae-residence-visa-guide.jpg"
+        image: "/assets/images/service-details/blogs/visa/uae-residence-visa-guide.jpg"
       },
       {
         title: "Investor vs Employee Visa in Dubai: What You Need to Know",
         url: "/blog/investor-vs-employee-visa-in-dubai-what-you-need-to-know",
-        image: "/assets/images/blogs/investor-vs-employee-visa-dubai.jpg"
+        image: "/assets/images/service-details/blogs/visa/investor-vs-employee-visa-dubai.jpg"
       },
       {
         title: "How to Sponsor Your Family for a UAE Visa",
         url: "/blog/how-to-sponsor-your-family-for-a-uae-visa",
-        image: "/assets/images/blogs/family-visa-sponsorship-uae.jpg"
+        image: "/assets/images/service-details/blogs/visa/family-visa-sponsorship-uae.jpg"
       },
       {
         title: "Top 5 Mistakes to Avoid During Visa Applications in the UAE",
         url: "/blog/top-5-mistakes-to-avoid-during-visa-applications-in-the-uae",
-        image: "/assets/images/blogs/uae-visa-application-mistakes.jpg"
+        image: "/assets/images/service-details/blogs/visa/uae-visa-application-mistakes.jpg"
       },
       {
         title: "Emirates ID and Medical Tests — Simplifying the Process for Residents",
         url: "/blog/emirates-id-and-medical-tests-simplifying-the-process-for-residents",
-        image: "/assets/images/blogs/emirates-id-medical-tests-guide.jpg"
+        image: "/assets/images/service-details/blogs/visa/emirates-id-medical-tests-guide.jpg"
       }
     ]
 
@@ -1050,27 +1050,27 @@ export const serviceDetails = [
       {
         title: "Step-by-Step Guide to ISO Certification in Dubai",
         url: "/blog/step-by-step-guide-to-iso-certification-in-dubai",
-        image: "/assets/images/blogs/iso-certification-dubai-guide.jpg"
+        image: "/assets/images/service-details/blogs/iso/iso-certification-dubai-guide.jpg"
       },
       {
         title: "Why Every UAE Business Needs Trademark Registration",
         url: "/blog/why-every-uae-business-needs-trademark-registration",
-        image: "/assets/images/blogs/trademark-registration-uae.jpg"
+        image: "/assets/images/service-details/blogs/iso/trademark-registration-uae.jpg"
       },
       {
         title: "ISO vs Local Quality Standards — What You Need to Know",
         url: "/blog/iso-vs-local-quality-standards-what-you-need-to-know",
-        image: "/assets/images/blogs/iso-vs-local-quality-standards.jpg"
+        image: "/assets/images/service-details/blogs/iso/iso-vs-local-quality-standards.jpg"
       },
       {
         title: "Common Mistakes in Trademark Registration and How to Avoid Them",
         url: "/blog/common-mistakes-in-trademark-registration-and-how-to-avoid-them",
-        image: "/assets/images/blogs/trademark-registration-mistakes.jpg"
+        image: "/assets/images/service-details/blogs/iso/trademark-registration-mistakes.jpg"
       },
       {
         title: "Benefits of ISO Certification for UAE Startups and SMEs",
         url: "/blog/benefits-of-iso-certification-for-uae-startups-and-smes",
-        image: "/assets/images/blogs/iso-certification-benefits-smes.jpg"
+        image: "/assets/images/service-details/blogs/iso/iso-certification-benefits-smes.jpg"
       }
     ]
 
@@ -2611,14 +2611,33 @@ export const serviceDetails = [
     ],
 
 
-
-    blogs: [
-      "Benefits of Setting Up a Freezone Company in Dubai",
-      "Step-by-Step Freezone Company Formation Guide",
-      "Top Freezones for Startups and SMEs in Dubai",
-      "Freezone vs Mainland Company: Which is Right for You?",
-      "How ADL Simplifies Freezone Business Setup in Dubai"
-    ]
+blogs: [
+  {
+    title: "Benefits of Setting Up a Freezone Company in Dubai",
+    url: "/blog/benefits-of-setting-up-a-freezone-company-in-dubai",
+    image: "/assets/images/blogs/freezone-company-benefits-dubai.jpg"
+  },
+  {
+    title: "Step-by-Step Freezone Company Formation Guide",
+    url: "/blog/step-by-step-freezone-company-formation-guide",
+    image: "/assets/images/blogs/freezone-company-formation-guide.jpg"
+  },
+  {
+    title: "Top Freezones for Startups and SMEs in Dubai",
+    url: "/blog/top-freezones-for-startups-and-smes-in-dubai",
+    image: "/assets/images/blogs/top-freezones-startups-smes-dubai.jpg"
+  },
+  {
+    title: "Freezone vs Mainland Company: Which is Right for You?",
+    url: "/blog/freezone-vs-mainland-company-which-is-right-for-you",
+    image: "/assets/images/blogs/freezone-vs-mainland-company.jpg"
+  },
+  {
+    title: "How ADL Simplifies Freezone Business Setup in Dubai",
+    url: "/blog/how-adl-simplifies-freezone-business-setup-in-dubai",
+    image: "/assets/images/blogs/adl-freezone-business-setup.jpg"
+  }
+]
 
 
   },
@@ -2767,13 +2786,34 @@ export const serviceDetails = [
     ],
 
 
-    blogs: [
-      "Step-by-Step Guide to Dubai Court Procedures",
-      "Common Mistakes in Legal Document Filing and How to Avoid Them",
-      "Corporate Legal Support Services in Dubai",
-      "How ADL Simplifies Court Procedures for Individuals and Businesses",
-      "Understanding Dubai Court Timelines and Filing Processes"
-    ]
+  blogs: [
+  {
+    title: "Step-by-Step Guide to Dubai Court Procedures",
+    url: "/blog/step-by-step-guide-to-dubai-court-procedures",
+    image: "/assets/images/blogs/dubai-court-procedures-guide.jpg"
+  },
+  {
+    title: "Common Mistakes in Legal Document Filing and How to Avoid Them",
+    url: "/blog/common-mistakes-in-legal-document-filing-and-how-to-avoid-them",
+    image: "/assets/images/blogs/legal-document-filing-mistakes.jpg"
+  },
+  {
+    title: "Corporate Legal Support Services in Dubai",
+    url: "/blog/corporate-legal-support-services-in-dubai",
+    image: "/assets/images/blogs/corporate-legal-support-dubai.jpg"
+  },
+  {
+    title: "How ADL Simplifies Court Procedures for Individuals and Businesses",
+    url: "/blog/how-adl-simplifies-court-procedures-for-individuals-and-businesses",
+    image: "/assets/images/blogs/adl-court-procedure-support.jpg"
+  },
+  {
+    title: "Understanding Dubai Court Timelines and Filing Processes",
+    url: "/blog/understanding-dubai-court-timelines-and-filing-processes",
+    image: "/assets/images/blogs/dubai-court-timelines-filing.jpg"
+  }
+]
+
 
 
 
@@ -2917,13 +2957,34 @@ export const serviceDetails = [
 
 
 
-    blogs: [
-      "Step-by-Step Guide to Online MOA & POA Services in Dubai",
-      "Why MOA & POA Are Essential for Businesses in UAE",
-      "Digital Notarization: Fast & Secure MOA & POA in Dubai",
-      "Common Mistakes to Avoid in MOA & POA Drafting",
-      "How ADL Simplifies Online MOA & POA Services for Corporates"
-    ]
+   blogs: [
+  {
+    title: "Step-by-Step Guide to Online MOA & POA Services in Dubai",
+    url: "/blog/step-by-step-guide-to-online-moa-and-poa-services-in-dubai",
+    image: "/assets/images/blogs/online-moa-poa-guide-dubai.jpg"
+  },
+  {
+    title: "Why MOA & POA Are Essential for Businesses in UAE",
+    url: "/blog/why-moa-and-poa-are-essential-for-businesses-in-uae",
+    image: "/assets/images/blogs/moa-poa-importance-uae.jpg"
+  },
+  {
+    title: "Digital Notarization: Fast & Secure MOA & POA in Dubai",
+    url: "/blog/digital-notarization-fast-and-secure-moa-and-poa-in-dubai",
+    image: "/assets/images/blogs/digital-notarization-moa-poa.jpg"
+  },
+  {
+    title: "Common Mistakes to Avoid in MOA & POA Drafting",
+    url: "/blog/common-mistakes-to-avoid-in-moa-and-poa-drafting",
+    image: "/assets/images/blogs/moa-poa-drafting-mistakes.jpg"
+  },
+  {
+    title: "How ADL Simplifies Online MOA & POA Services for Corporates",
+    url: "/blog/how-adl-simplifies-online-moa-and-poa-services-for-corporates",
+    image: "/assets/images/blogs/adl-online-moa-poa-services.jpg"
+  }
+]
+
 
 
 
@@ -3090,12 +3151,33 @@ export const serviceDetails = [
 
 
     blogs: [
-      "Why Virtual Offices Are Becoming Popular in the UAE",
-      "How to Choose the Right Virtual Office Package in Dubai",
-      "Freezone vs Mainland Virtual Office — Key Differences",
-      "Top Benefits of Running a UAE Business Virtually",
-      "Cost-Effective Business Setup: Virtual Office Explained"
-    ]
+  {
+    title: "Why Virtual Offices Are Becoming Popular in the UAE",
+    url: "/blog/why-virtual-offices-are-becoming-popular-in-the-uae",
+    image: "/assets/images/blogs/virtual-offices-popular-uae.jpg"
+  },
+  {
+    title: "How to Choose the Right Virtual Office Package in Dubai",
+    url: "/blog/how-to-choose-the-right-virtual-office-package-in-dubai",
+    image: "/assets/images/blogs/choose-virtual-office-package-dubai.jpg"
+  },
+  {
+    title: "Freezone vs Mainland Virtual Office — Key Differences",
+    url: "/blog/freezone-vs-mainland-virtual-office-key-differences",
+    image: "/assets/images/blogs/freezone-vs-mainland-virtual-office.jpg"
+  },
+  {
+    title: "Top Benefits of Running a UAE Business Virtually",
+    url: "/blog/top-benefits-of-running-a-uae-business-virtually",
+    image: "/assets/images/blogs/benefits-running-virtual-business-uae.jpg"
+  },
+  {
+    title: "Cost-Effective Business Setup: Virtual Office Explained",
+    url: "/blog/cost-effective-business-setup-virtual-office-explained",
+    image: "/assets/images/blogs/virtual-office-cost-effective-setup.jpg"
+  }
+]
+
     ,
     finalCta: {
       headline: "Ready to Activate Your UAE Virtual Office?",
