@@ -15,22 +15,22 @@ export const metadata = {
 };
 
 const page = () => {
-    return (
-        <div>
-            <Navbar />
-            <HeroSection
-                title={"Blogs"}
-                
-                decription={"Learn more about business setup, company formation, visas, compliance, and other essential UAE business services in our articles. Read more blogs to stay informed and make smarter decisions for your business. "}
-                
-                />
-                <ExclusiveBlogs blogs={blogs}/>
-<Blogs/>
+  return (
+    <div>
+      <Navbar />
+      <HeroSection
+        title={"Blogs"}
+
+        decription={"Learn more about business setup, company formation, visas, compliance, and other essential UAE business services in our articles. Read more blogs to stay informed and make smarter decisions for your business. "}
+
+      />
+      <ExclusiveBlogs blogs={[...blogs].reverse().slice(18, 26)} />
+      <Blogs />
 
 
-            <Footer />
-        </div>
-    );
+      <Footer />
+    </div>
+  );
 };
 
 export default page;

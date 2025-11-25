@@ -11,7 +11,7 @@ export function buildSEO({
   return {
     title,
     description,
-    keywords: keywords ? keywords.split(",") : [],
+    keywords: Array.isArray(keywords) ? keywords : (keywords ? keywords.split(",") : []),
 
     alternates: {
       canonical: canonical,

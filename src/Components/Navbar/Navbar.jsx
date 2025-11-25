@@ -232,7 +232,7 @@ export default function Navbar() {
             style={{ width: dropdownWidth ? `${dropdownWidth}px` : 'auto' }}
           >
             <div className="max-h-[230px] overflow-y-auto p-6 scrollbar-ultrathin">
-              <div className="grid lg:grid-cols-3 xl:grid-cols-4 gap-4 text-white text-sm">
+              <div className="grid lg:grid-cols-3 xl:grid-cols-4 gap-4 items-center text-white text-sm">
                 {serviceItems.map((service, i) => (
                   <Link
                     href={service.path}
