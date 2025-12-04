@@ -35,8 +35,8 @@ export default function SerivceDetails() {
       <WhyChooseSection title={service.section3.title} description={service.section3.description} points={service.section3.points} image={service.section3.image} />
       <WhyChooseDubai title={service.section1.title} description1={service.section1.description1} description2={service.section1.description2} meetingTitle={service.meeting.title} meetingDescription={service.meeting.description} />
       <FAQSection faqs={service.faqs} />
-      <Blogs blogs={blogs.slice(0,5)} />
-      <InnerBanner title={"Ready to Launch Your Business in Dubai"} description={"Let ADL Business Solutions handle the paperwork while you focus on growth. We make business setup seamless, fast, and affordable."} buttonText={"Start Your Business Now"} />
+      <Blogs blogs={service.blogs} />
+      <InnerBanner title={service.cta.title} description={service.cta.description} buttonText={service.cta.buttonText} link={service.cta.button1Url} />
       <Footer />
     </div>
   )

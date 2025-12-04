@@ -61,15 +61,9 @@ const MeetingComponent = ({ handleScheduleClick }) => {
     if (!userInfo.email.trim()) newErrors.email = "Email is required";
     if (!userInfo.phone.trim()) newErrors.phone = "Phone number is required";
     if (!userInfo.mainService) newErrors.mainService = "Please select a service";
-    if (
-      userInfo.mainService === "Company Formation" &&
-      !userInfo.formationType
-    )
+    if (userInfo.mainService === "Company Formation" && !userInfo.formationType)
       newErrors.formationType = "Please select a category";
-    if (
-      userInfo.mainService === "Visa Services" &&
-      !userInfo.formationType
-    )
+    if (userInfo.mainService === "Visa Services" && !userInfo.formationType)
       newErrors.formationType = "Please select a visa type";
     if (!selectedTime) newErrors.selectedTime = "Please select a meeting time";
     if (!userInfo.purpose.trim()) newErrors.purpose = "Please enter purpose";
@@ -100,8 +94,24 @@ const MeetingComponent = ({ handleScheduleClick }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50 overflow-y-auto">
-      <div className="glass-card rounded-3xl p-8 w-full max-w-3xl mx-auto relative overflow-y-auto max-h-[90vh]">
+    <div
+      className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          handleScheduleClick(false); // Close on outside click
+        }
+      }}
+    >
+      <div className="glass-card rounded-3xl p-8 w-full max-w-3xl mx-auto relative overflow-y-auto max-h-[90vh] custom-scrollbar">
+
+        {/* ❌ Close Button */}
+        <button
+          onClick={() => handleScheduleClick(false)}
+          className="absolute top-3 right-3 text-white bg-white/20 hover:bg-white/30 rounded-full w-9 h-9 flex items-center justify-center backdrop-blur-md"
+        >
+          ✕
+        </button>
+
         <h3 className="text-2xl font-bold text-white mb-6 text-center">
           Schedule Meeting
         </h3>
@@ -118,14 +128,10 @@ const MeetingComponent = ({ handleScheduleClick }) => {
                   setUserInfo({ ...userInfo, name: e.target.value });
                   setErrors((prev) => ({ ...prev, name: "" }));
                 }}
-                className={`w-full glass-bg rounded-2xl px-4 py-3 backdrop-blur-sm ${
-                  errors.name ? "border border-red-400" : ""
-                }`}
+                className={`w-full glass-bg rounded-2xl px-4 py-3 backdrop-blur-sm ${errors.name ? "border border-red-400" : ""}`}
                 placeholder="Enter your name"
               />
-              {errors.name && (
-                <p className="text-red-400 text-sm mt-1">{errors.name}</p>
-              )}
+              {errors.name && <p className="text-red-400 text-sm mt-1">{errors.name}</p>}
             </div>
 
             <div>
@@ -137,14 +143,10 @@ const MeetingComponent = ({ handleScheduleClick }) => {
                   setUserInfo({ ...userInfo, email: e.target.value });
                   setErrors((prev) => ({ ...prev, email: "" }));
                 }}
-                className={`w-full glass rounded-2xl px-4 py-3 backdrop-blur-sm ${
-                  errors.email ? "border border-red-400" : ""
-                }`}
+                className={`w-full glass rounded-2xl px-4 py-3 backdrop-blur-sm ${errors.email ? "border border-red-400" : ""}`}
                 placeholder="Enter your email"
               />
-              {errors.email && (
-                <p className="text-red-400 text-sm mt-1">{errors.email}</p>
-              )}
+              {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
             </div>
           </div>
 
@@ -158,14 +160,10 @@ const MeetingComponent = ({ handleScheduleClick }) => {
                 setUserInfo({ ...userInfo, phone: e.target.value });
                 setErrors((prev) => ({ ...prev, phone: "" }));
               }}
-              className={`w-full glass rounded-2xl px-4 py-3 backdrop-blur-sm ${
-                errors.phone ? "border border-red-400" : ""
-              }`}
+              className={`w-full glass rounded-2xl px-4 py-3 backdrop-blur-sm ${errors.phone ? "border border-red-400" : ""}`}
               placeholder="Enter your phone"
             />
-            {errors.phone && (
-              <p className="text-red-400 text-sm mt-1">{errors.phone}</p>
-            )}
+            {errors.phone && <p className="text-red-400 text-sm mt-1">{errors.phone}</p>}
           </div>
 
           {/* 🏢 Main Service Selector */}
@@ -182,22 +180,14 @@ const MeetingComponent = ({ handleScheduleClick }) => {
                 });
                 setErrors((prev) => ({ ...prev, mainService: "" }));
               }}
-              className={`w-full glass rounded-2xl px-4 py-3 backdrop-blur-sm text-white bg-transparent ${
-                errors.mainService ? "border border-red-400" : ""
-              }`}
+              className={`w-full glass rounded-2xl px-4 py-3 backdrop-blur-sm text-white bg-transparent ${errors.mainService ? "border border-red-400" : ""}`}
             >
-              <option value="" className="bg-gray-400">
-                Select Service
-              </option>
+              <option value="" className="bg-gray-400">Select Service</option>
               {Object.keys(serviceCategories).map((service, i) => (
-                <option key={i} value={service} className="bg-gray-400">
-                  {service}
-                </option>
+                <option key={i} value={service} className="bg-gray-400">{service}</option>
               ))}
             </select>
-            {errors.mainService && (
-              <p className="text-red-400 text-sm mt-1">{errors.mainService}</p>
-            )}
+            {errors.mainService && <p className="text-red-400 text-sm mt-1">{errors.mainService}</p>}
           </div>
 
           {/* 🧩 Category for Company Formation */}
@@ -214,105 +204,62 @@ const MeetingComponent = ({ handleScheduleClick }) => {
                   });
                   setErrors((prev) => ({ ...prev, formationType: "" }));
                 }}
-                className={`w-full glass rounded-2xl px-4 py-3 backdrop-blur-sm text-white bg-transparent ${
-                  errors.formationType ? "border border-red-400" : ""
-                }`}
+                className={`w-full glass rounded-2xl px-4 py-3 backdrop-blur-sm text-white bg-transparent ${errors.formationType ? "border border-red-400" : ""}`}
               >
-                <option value="" className="bg-gray-400">
-                  Select Category
-                </option>
-                {Object.keys(serviceCategories[userInfo.mainService]).map(
-                  (cat, i) => (
-                    <option key={i} value={cat} className="bg-gray-400">
-                      {cat}
-                    </option>
-                  )
-                )}
+                <option value="" className="bg-gray-400">Select Category</option>
+                {Object.keys(serviceCategories[userInfo.mainService]).map((cat, i) => (
+                  <option key={i} value={cat} className="bg-gray-400">{cat}</option>
+                ))}
               </select>
-              {errors.formationType && (
-                <p className="text-red-400 text-sm mt-1">
-                  {errors.formationType}
-                </p>
-              )}
+              {errors.formationType && <p className="text-red-400 text-sm mt-1">{errors.formationType}</p>}
             </div>
           )}
 
-          {/* 🪜 Subcategory (Only for Company Formation) */}
+          {/* 🪜 Subcategory */}
           {userInfo.mainService === "Company Formation" &&
             userInfo.formationType &&
-            serviceCategories[userInfo.mainService][userInfo.formationType]
-              ?.length > 0 && (
+            serviceCategories[userInfo.mainService][userInfo.formationType]?.length > 0 && (
               <div>
-                <label className="block text-white mb-2">
-                  Select Subcategory
-                </label>
+                <label className="block text-white mb-2">Select Subcategory</label>
                 <select
                   value={userInfo.subCategory}
                   onChange={(e) => {
-                    setUserInfo({
-                      ...userInfo,
-                      subCategory: e.target.value
-                    });
+                    setUserInfo({ ...userInfo, subCategory: e.target.value });
                     setErrors((prev) => ({ ...prev, subCategory: "" }));
                   }}
-                  className={`w-full glass rounded-2xl px-4 py-3 backdrop-blur-sm text-white bg-transparent ${
-                    errors.subCategory ? "border border-red-400" : ""
-                  }`}
+                  className={`w-full glass rounded-2xl px-4 py-3 backdrop-blur-sm text-white bg-transparent ${errors.subCategory ? "border border-red-400" : ""}`}
                 >
-                  <option value="" className="bg-gray-400">
-                    Select Subcategory
-                  </option>
-                  {serviceCategories[userInfo.mainService][
-                    userInfo.formationType
-                  ].map((item, i) => (
-                    <option key={i} value={item} className="bg-gray-400">
-                      {item}
-                    </option>
+                  <option value="" className="bg-gray-400">Select Subcategory</option>
+                  {serviceCategories[userInfo.mainService][userInfo.formationType].map((item, i) => (
+                    <option key={i} value={item} className="bg-gray-400">{item}</option>
                   ))}
                 </select>
-                {errors.subCategory && (
-                  <p className="text-red-400 text-sm mt-1">
-                    {errors.subCategory}
-                  </p>
-                )}
+                {errors.subCategory && <p className="text-red-400 text-sm mt-1">{errors.subCategory}</p>}
               </div>
             )}
 
-          {/* 🧩 Category for Visa Services */}
+          {/* 🧩 Visa Services */}
           {userInfo.mainService === "Visa Services" && (
             <div>
               <label className="block text-white mb-2">Select Visa Type</label>
               <select
                 value={userInfo.formationType}
                 onChange={(e) => {
-                  setUserInfo({
-                    ...userInfo,
-                    formationType: e.target.value
-                  });
+                  setUserInfo({ ...userInfo, formationType: e.target.value });
                   setErrors((prev) => ({ ...prev, formationType: "" }));
                 }}
-                className={`w-full glass rounded-2xl px-4 py-3 backdrop-blur-sm text-white bg-transparent ${
-                  errors.formationType ? "border border-red-400" : ""
-                }`}
+                className={`w-full glass rounded-2xl px-4 py-3 backdrop-blur-sm text-white bg-transparent ${errors.formationType ? "border border-red-400" : ""}`}
               >
-                <option value="" className="bg-gray-400">
-                  Select Visa Type
-                </option>
+                <option value="" className="bg-gray-400">Select Visa Type</option>
                 {serviceCategories["Visa Services"].map((visa, i) => (
-                  <option key={i} value={visa} className="bg-gray-400">
-                    {visa}
-                  </option>
+                  <option key={i} value={visa} className="bg-gray-400">{visa}</option>
                 ))}
               </select>
-              {errors.formationType && (
-                <p className="text-red-400 text-sm mt-1">
-                  {errors.formationType}
-                </p>
-              )}
+              {errors.formationType && <p className="text-red-400 text-sm mt-1">{errors.formationType}</p>}
             </div>
           )}
 
-          {/* 🗓️ Date & Time Pickers */}
+          {/* 🗓️ Date Picker */}
           <div>
             <label className="block text-white mb-2">Select Date</label>
             <div className="flex gap-3 overflow-x-auto pb-1">
@@ -353,9 +300,7 @@ const MeetingComponent = ({ handleScheduleClick }) => {
                 </button>
               ))}
             </div>
-            {errors.selectedTime && (
-              <p className="text-red-400 text-sm mt-1">{errors.selectedTime}</p>
-            )}
+            {errors.selectedTime && <p className="text-red-400 text-sm mt-1">{errors.selectedTime}</p>}
           </div>
 
           {/* 📝 Purpose */}
@@ -367,23 +312,18 @@ const MeetingComponent = ({ handleScheduleClick }) => {
                 setUserInfo({ ...userInfo, purpose: e.target.value });
                 setErrors((prev) => ({ ...prev, purpose: "" }));
               }}
-              className={`w-full glass rounded-2xl px-4 py-3 backdrop-blur-sm ${
-                errors.purpose ? "border border-red-400" : ""
-              }`}
+              className={`w-full glass rounded-2xl px-4 py-3 backdrop-blur-sm ${errors.purpose ? "border border-red-400" : ""}`}
               placeholder="Meeting purpose"
               rows={3}
             />
-            {errors.purpose && (
-              <p className="text-red-400 text-sm mt-1">{errors.purpose}</p>
-            )}
+            {errors.purpose && <p className="text-red-400 text-sm mt-1">{errors.purpose}</p>}
           </div>
 
           {/* Summary */}
           <div className="bg-blue-50/30 rounded-2xl p-4 backdrop-blur-sm text-sm text-gray-100">
             <strong>Selected Schedule:</strong>
             <br />
-            {daysSchedule[selectedDay].day}, {daysSchedule[selectedDay].date} at{' '}
-            {selectedTime || '—'}
+            {daysSchedule[selectedDay].day}, {daysSchedule[selectedDay].date} at {selectedTime || '—'}
           </div>
 
           {/* Buttons */}
